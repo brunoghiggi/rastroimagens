@@ -1,0 +1,438 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Rastro Imagens · Fotos e vídeos de corridas, motos e carros</title>
+<meta name="description" content="Encontre suas fotos e vídeos de corridas, passeios de moto e carros na Serra Gaúcha. Escolha o evento e veja o álbum completo.">
+<meta name="theme-color" content="#16191C">
+<meta property="og:title" content="Rastro Imagens">
+<meta property="og:description" content="Seu movimento deixou um rastro. Ache suas fotos e vídeos.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://rastroimagens.com.br/">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='12' fill='%2316191C'/%3E%3Ctext x='18' y='48' font-family='Arial Black,Arial,sans-serif' font-weight='900' font-size='44' fill='%232F8CFF' opacity='.45'%3ER%3C/text%3E%3Ctext x='26' y='48' font-family='Arial Black,Arial,sans-serif' font-weight='900' font-size='44' fill='%232F8CFF'%3ER%3C/text%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,400..900&display=swap">
+<style>
+:root{
+  --asfalto:#16191C;
+  --asfalto-2:#22272B;
+  --azul:#2F8CFF;
+  --azul-escuro:#0B4FB3;
+  --neblina:#F7F5F0;
+  --papel:#FFFFFF;
+  --concreto:#A3A9AE;
+  --texto-2:#4F565C;
+  --linha:#E2DED5;
+  --raio:12px;
+  --max:1160px;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--neblina);color:var(--asfalto);font-family:'Archivo',system-ui,sans-serif;font-size:17px;line-height:1.5;-webkit-font-smoothing:antialiased}
+img{max-width:100%;display:block}
+a{color:var(--azul-escuro)}
+a:hover{color:#083A84}
+:focus-visible{outline:3px solid var(--azul);outline-offset:3px}
+.wrap{max-width:var(--max);margin:0 auto;padding:0 20px}
+.wide{font-stretch:125%}
+.sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}
+
+/* Cabeçalho */
+.topo{background:var(--asfalto);color:var(--neblina);position:sticky;top:0;z-index:20}
+.topo .wrap{display:flex;align-items:center;gap:24px;min-height:68px;flex-wrap:wrap}
+.marca{display:flex;align-items:center;gap:10px;text-decoration:none;color:var(--neblina)}
+.marca:hover{color:var(--neblina)}
+.marca-nome{display:flex;flex-direction:column;line-height:1}
+.marca-nome b{font-weight:900;font-stretch:125%;font-size:22px;letter-spacing:-.5px}
+.marca-nome span{font-weight:700;font-stretch:125%;font-size:10px;letter-spacing:6px;color:var(--azul);margin-top:3px}
+.menu{display:flex;gap:6px;margin-left:auto;flex-wrap:wrap}
+.menu a{color:var(--neblina);text-decoration:none;font-size:15px;padding:12px 10px;border-radius:6px}
+.menu a:hover{color:var(--azul)}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;min-height:48px;padding:0 20px;border-radius:8px;border:0;font:inherit;font-weight:800;font-size:15px;text-decoration:none;cursor:pointer}
+.btn-azul{background:var(--azul);color:var(--asfalto)}
+.btn-azul:hover{background:#5AA4FF;color:var(--asfalto)}
+.btn-escuro{background:var(--asfalto);color:var(--neblina)}
+.btn-escuro:hover{background:#2C3236;color:var(--neblina)}
+
+/* Hero */
+.hero{position:relative;overflow:hidden;background:var(--asfalto);color:var(--neblina);padding:72px 0 88px}
+.hero-rastro{position:absolute;right:-60px;top:36px;width:620px;max-width:70%;opacity:.9;pointer-events:none}
+.hero h1{position:relative;margin:0;max-width:760px;font-weight:900;font-stretch:125%;font-size:clamp(38px,7vw,76px);line-height:.95;letter-spacing:-1px}
+.hero p{position:relative;margin:20px 0 0;max-width:560px;font-size:19px;color:var(--concreto)}
+.busca{position:relative;margin-top:32px;max-width:640px}
+.busca label{display:block;font-weight:700;font-size:13px;letter-spacing:2px;margin-bottom:8px}
+.busca-linha{display:flex;gap:8px;flex-wrap:wrap}
+.busca input{flex:1 1 260px;min-height:54px;border:0;border-radius:8px;padding:0 16px;font:inherit;font-size:17px;background:var(--neblina);color:var(--asfalto)}
+.busca input::placeholder{color:#6B7277}
+
+/* Eventos */
+.secao{padding:64px 0}
+.secao-titulo{display:flex;align-items:flex-end;justify-content:space-between;gap:16px;flex-wrap:wrap;margin-bottom:24px}
+.secao h2{margin:0;font-weight:900;font-stretch:125%;font-size:clamp(26px,4vw,36px);line-height:1}
+.filtros{display:flex;gap:8px;flex-wrap:wrap}
+.chip{min-height:44px;padding:0 16px;border-radius:999px;border:1.5px solid var(--asfalto);background:transparent;color:var(--asfalto);font:inherit;font-weight:700;font-size:14px;cursor:pointer}
+.chip[aria-pressed="true"]{background:var(--asfalto);color:var(--neblina)}
+.grade{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:20px}
+.card{background:var(--papel);border-radius:var(--raio);overflow:hidden;display:flex;flex-direction:column;border:1px solid var(--linha)}
+.card-topo{position:relative;background:var(--asfalto);color:var(--neblina);padding:20px 20px 18px;min-height:132px;display:flex;flex-direction:column;justify-content:space-between;gap:12px;overflow:hidden}
+.card-topo svg{position:absolute;right:-20px;bottom:14px;width:180px;opacity:.55}
+.card-data{position:relative;display:flex;align-items:baseline;gap:8px}
+.card-dia{font-weight:900;font-stretch:125%;font-size:40px;line-height:1}
+.card-mes{font-weight:700;font-size:14px;letter-spacing:2px;color:var(--concreto)}
+.etiquetas{position:relative;display:flex;gap:6px;flex-wrap:wrap}
+.tag{font-size:12px;font-weight:800;letter-spacing:1.5px;padding:4px 8px;border-radius:5px;background:var(--asfalto-2);color:var(--neblina)}
+.tag-novo{background:var(--azul);color:var(--asfalto)}
+.card-corpo{padding:18px 20px 20px;display:flex;flex-direction:column;gap:12px;flex:1}
+.card-corpo h3{margin:0;font-size:19px;line-height:1.25;font-weight:800}
+.card-plataforma{font-size:14px;color:var(--texto-2)}
+.card-corpo .btn{margin-top:auto;width:100%}
+.vazio{grid-column:1/-1;background:var(--papel);border:1px dashed #C9C4B8;border-radius:var(--raio);padding:32px;text-align:center;color:var(--texto-2)}
+.esqueleto{height:290px;border-radius:var(--raio);background:linear-gradient(90deg,#ECE9E2,#F4F2EC,#ECE9E2);background-size:200% 100%;animation:brilho 1.2s infinite linear}
+@keyframes brilho{to{background-position:-200% 0}}
+.mais{display:flex;justify-content:center;margin-top:28px}
+.mais[hidden]{display:none}
+
+/* Como funciona */
+.passos{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:20px}
+.passo{background:var(--papel);border-radius:var(--raio);padding:24px;border:1px solid var(--linha)}
+.passo-n{font-weight:900;font-stretch:125%;font-size:32px;color:var(--azul-escuro);line-height:1}
+.passo h3{margin:10px 0 6px;font-size:19px}
+.passo p{margin:0;color:var(--texto-2);font-size:16px}
+.plataformas{margin-top:20px;font-size:15px;color:var(--texto-2)}
+
+/* Vídeos */
+.faixa-escura{background:var(--asfalto);color:var(--neblina)}
+.videos{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:32px;align-items:center}
+.videos h2{color:var(--neblina)}
+.videos p{color:var(--concreto);margin:14px 0 22px;max-width:520px}
+.video-caixa{aspect-ratio:16/9;border-radius:var(--raio);background:var(--asfalto-2);border:1px solid #2F353A;display:flex;align-items:center;justify-content:center;color:var(--concreto);font-weight:700;letter-spacing:2px;font-size:14px}
+
+/* Sobre */
+.sobre{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:40px;align-items:start}
+.sobre-frase{font-weight:900;font-stretch:125%;font-size:clamp(30px,5vw,48px);line-height:.98;margin:0}
+.sobre p{margin:0 0 14px;color:#2C3236}
+
+/* Contato */
+.contato{display:flex;gap:12px;flex-wrap:wrap;margin-top:8px}
+
+/* Rodapé */
+.rodape{background:var(--asfalto);color:var(--concreto);padding:36px 0;font-size:14px}
+.rodape .wrap{display:flex;gap:16px;justify-content:space-between;align-items:center;flex-wrap:wrap}
+.rodape a{color:var(--neblina)}
+.assinatura{font-size:12px;letter-spacing:.5px;color:#8A9096;margin-top:2px}
+
+@media (max-width:720px){
+  .menu{order:3;width:100%;margin-left:0;justify-content:space-between}
+  .menu a{padding:10px 6px;font-size:14px}
+  .topo .btn{margin-left:auto}
+  .hero{padding:48px 0 64px}
+  .hero-rastro{width:380px;top:20px;opacity:.5}
+  .secao{padding:48px 0}
+}
+@media (prefers-reduced-motion:reduce){
+  html{scroll-behavior:auto}
+  .esqueleto{animation:none}
+}
+</style>
+</head>
+<body>
+
+<header class="topo">
+  <div class="wrap">
+    <a class="marca" href="#inicio" aria-label="Rastro Imagens, início">
+      <svg width="44" height="34" viewBox="0 0 160 120" aria-hidden="true">
+        <text x="4" y="104" fill="#2F8CFF" opacity=".22" font-family="Archivo, sans-serif" font-weight="900" font-size="120" style="font-stretch:125%">R</text>
+        <text x="26" y="104" fill="#2F8CFF" opacity=".5" font-family="Archivo, sans-serif" font-weight="900" font-size="120" style="font-stretch:125%">R</text>
+        <text x="50" y="104" fill="#2F8CFF" font-family="Archivo, sans-serif" font-weight="900" font-size="120" style="font-stretch:125%">R</text>
+      </svg>
+      <span class="marca-nome"><b>RASTRO</b><span>IMAGENS</span></span>
+    </a>
+    <nav class="menu" aria-label="Principal">
+      <a href="#eventos">Eventos</a>
+      <a href="#como-funciona">Como funciona</a>
+      <!-- <a href="#videos">Vídeos</a> -->
+      <a href="#sobre">Sobre</a>
+      <a href="#contato">Contato</a>
+    </nav>
+    <a class="btn btn-azul" href="#eventos">Ache sua foto</a>
+  </div>
+</header>
+
+<main id="inicio">
+
+  <section class="hero" aria-labelledby="titulo-hero">
+    <svg class="hero-rastro" viewBox="0 0 560 120" aria-hidden="true">
+      <polygon points="0,56 560,40 560,80 0,64" fill="#2F8CFF" opacity=".18"/>
+      <polygon points="120,16 560,6 560,30 120,22" fill="#2F8CFF" opacity=".38"/>
+      <polygon points="120,98 560,90 560,114 120,104" fill="#2F8CFF" opacity=".38"/>
+    </svg>
+    <div class="wrap">
+      <h1 id="titulo-hero">SEU MOVIMENTO DEIXOU UM RASTRO.</h1>
+      <p>Encontre suas fotos e vídeos de corridas, treinos, motos e carros na Serra Gaúcha.</p>
+      <form class="busca" role="search" onsubmit="event.preventDefault();document.getElementById('eventos').scrollIntoView();">
+        <label for="busca">BUSCAR EVENTO</label>
+        <div class="busca-linha">
+          <input id="busca" type="search" placeholder="Nome do evento ou cidade" autocomplete="off">
+          <button class="btn btn-azul" type="submit">Buscar</button>
+        </div>
+      </form>
+    </div>
+  </section>
+
+  <section class="secao" id="eventos" aria-labelledby="titulo-eventos">
+    <div class="wrap">
+      <div class="secao-titulo">
+        <h2 id="titulo-eventos">EVENTOS</h2>
+        <div class="filtros" id="filtros" role="group" aria-label="Filtrar por tipo"></div>
+      </div>
+      <div class="grade" id="grade" aria-live="polite">
+        <div class="esqueleto"></div><div class="esqueleto"></div><div class="esqueleto"></div>
+      </div>
+      <div class="mais" id="mais" hidden>
+        <button class="btn btn-escuro" type="button" id="btn-mais">Ver eventos anteriores</button>
+      </div>
+    </div>
+  </section>
+
+  <section class="secao" id="como-funciona" aria-labelledby="titulo-como" style="padding-top:0">
+    <div class="wrap">
+      <div class="secao-titulo"><h2 id="titulo-como">COMO ACHAR SUA FOTO</h2></div>
+      <div class="passos">
+        <div class="passo">
+          <div class="passo-n">01</div>
+          <h3>Escolha o evento</h3>
+          <p>Busque pelo nome ou filtre por tipo aqui em cima.</p>
+        </div>
+        <div class="passo">
+          <div class="passo-n">02</div>
+          <h3>Abra o álbum</h3>
+          <p>O botão "Ver fotos" leva para o álbum completo do evento.</p>
+        </div>
+        <div class="passo">
+          <div class="passo-n">03</div>
+          <h3>Encontre e baixe</h3>
+          <p>No álbum, procure suas fotos e finalize a compra com segurança pela própria plataforma.</p>
+        </div>
+      </div>
+      <p class="plataformas">As fotos ficam hospedadas nas plataformas parceiras <strong>Foco Radical</strong> e <strong>Fotto</strong>, que cuidam da escolha das fotos, do pagamento e da entrega.</p>
+    </div>
+  </section>
+
+  <!-- SEÇÃO DE VÍDEOS: descomentar quando houver vídeo para postar (e o link "Vídeos" no menu)
+  <section class="secao faixa-escura" id="videos" aria-labelledby="titulo-videos">
+    <div class="wrap videos">
+      <div>
+        <h2 id="titulo-videos" class="wide" style="margin:0;font-weight:900;font-size:clamp(26px,4vw,36px);line-height:1">VÍDEOS E DRONE</h2>
+        <p>Vídeos dos eventos e imagens aéreas de drone. Os primeiros vídeos saem no Instagram.</p>
+        <a class="btn btn-azul" href="https://www.instagram.com/rastroimagens/" target="_blank" rel="noopener">Ver no Instagram</a>
+      </div>
+      <div class="video-caixa">[VÍDEO EM DESTAQUE]</div>
+    </div>
+  </section>
+  FIM DA SEÇÃO DE VÍDEOS -->
+
+  <section class="secao" id="sobre" aria-labelledby="titulo-sobre">
+    <div class="wrap sobre">
+      <h2 id="titulo-sobre" class="sobre-frase">TUDO QUE SE MOVE DEIXA UM RASTRO.</h2>
+      <div>
+        <p>A Rastro Imagens fotografa e filma quem está em movimento: corredores, motociclistas e carros pelas estradas da Serra Gaúcha, também do alto, com drone.</p>
+        <p>Nasceu numa família de fotógrafos e leva essa experiência para a beira do caminho. Passou por nós? Teu rastro está aqui.</p>
+        <div id="contato" class="contato">
+          <a class="btn btn-escuro" href="https://wa.me/55[SEU_NUMERO]" target="_blank" rel="noopener">WhatsApp</a>
+          <a class="btn btn-escuro" href="https://www.instagram.com/rastroimagens/" target="_blank" rel="noopener">Instagram</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer class="rodape">
+  <div class="wrap">
+    <div>
+      <div style="color:var(--neblina);font-weight:900;font-stretch:125%">RASTRO IMAGENS</div>
+      <div class="assinatura">by Bruno Ghiggi</div>
+    </div>
+    <div>Fotos vendidas via <a href="https://www.focoradical.com.br" target="_blank" rel="noopener">Foco Radical</a> e <a href="https://www.fotto.com.br" target="_blank" rel="noopener">Fotto</a></div>
+  </div>
+</footer>
+
+<script>
+/* ============================================================
+   CONFIGURAÇÃO
+   Os eventos vêm da planilha Google "Eventos"
+   (colunas: Data, Evento, Tipo, Plataforma, Link).
+   A planilha precisa estar compartilhada como
+   "Qualquer pessoa com o link: Leitor".
+   ============================================================ */
+const PLANILHA_ID = '13V3y2jFuOJ7a8gLuarPBlkxWpxyySS8ZFTTn6GiunuQ';
+const URL_CSV = 'https://docs.google.com/spreadsheets/d/' + PLANILHA_ID + '/gviz/tq?tqx=out:csv';
+const POR_PAGINA = 9;      // eventos mostrados antes do botão "ver anteriores"
+const DIAS_NOVO = 10;      // eventos mais recentes que isso ganham a etiqueta NOVO
+
+/* Usado só se a planilha não carregar (sem internet, planilha privada etc.) */
+const EVENTOS_RESERVA = [
+  ['31/10/2026','Caminhos de Pedra','Treino','Fotto','https://www.fotto.com.br/caminhos-de-pedra-bento-goncalves-31102026/e/472490'],
+  ['20/10/2026','Treinão Outubro Rosa','Treino','Fotto','https://www.fotto.com.br/treinao-solidario-outubro-rosa-bento-goncalves/e/463817'],
+  ['19/10/2026','Treino na Pista','Treino','Fotto','https://www.fotto.com.br/treino-noturno-na-pista/e/463298'],
+  ['11/10/2026','1° Desafio Entre Trilhos e Fé','Corrida','Foco Radical','https://ghiggi.focoradical.com.br/evento/20261011-1o-desafio-entre-trilhos-e-fe-guapore-19127?loja=brgh'],
+  ['03/10/2026','Wine Run Vale dos Vinhedos','Corrida','Foco Radical','https://ghiggi.focoradical.com.br/evento/20261003-wine-run-vale-dos-vinhedos-bento-goncalves-9407?loja=brgh'],
+  ['26/09/2026','12ª Sparkling Night Run','Corrida','Foco Radical','https://ghiggi.focoradical.com.br/evento/20260926-sparkling-nigth-run-12a-edicao-bento-goncalves-15165?loja=brgh']
+];
+
+const MESES = ['JAN','FEV','MAR','ABR','MAI','JUN','JUL','AGO','SET','OUT','NOV','DEZ'];
+let todos = [];
+let filtroTipo = 'Todos';
+let termo = '';
+let limite = POR_PAGINA;
+
+/* Lê CSV respeitando aspas e vírgulas dentro de campos */
+function lerCSV(texto){
+  const linhas = []; let campo = ''; let linha = []; let aspas = false;
+  for (let i = 0; i < texto.length; i++){
+    const c = texto[i];
+    if (aspas){
+      if (c === '"' && texto[i+1] === '"'){ campo += '"'; i++; }
+      else if (c === '"'){ aspas = false; }
+      else campo += c;
+    } else if (c === '"'){ aspas = true; }
+    else if (c === ','){ linha.push(campo); campo = ''; }
+    else if (c === '\n' || c === '\r'){
+      if (c === '\r' && texto[i+1] === '\n') i++;
+      linha.push(campo); linhas.push(linha); linha = []; campo = '';
+    } else campo += c;
+  }
+  if (campo !== '' || linha.length){ linha.push(campo); linhas.push(linha); }
+  return linhas;
+}
+
+function paraData(txt){
+  const m = String(txt || '').trim().match(/^(\d{1,2})\/(\d{1,2})\/(\d{4})$/);
+  if (!m) return null;
+  return new Date(+m[3], +m[2] - 1, +m[1]);
+}
+
+function normalizar(s){
+  return String(s || '').normalize('NFD').replace(/[̀-ͯ]/g,'').toLowerCase().trim();
+}
+
+function montar(linhas){
+  return linhas
+    .map(l => ({
+      data: paraData(l[0]),
+      dataTxt: (l[0] || '').trim(),
+      nome: (l[1] || '').trim(),
+      tipo: (l[2] || '').trim() || 'Evento',
+      plataforma: (l[3] || '').trim(),
+      link: (l[4] || '').trim()
+    }))
+    .filter(e => e.nome && /^https?:\/\//i.test(e.link))
+    .sort((a, b) => (b.data ? b.data.getTime() : 0) - (a.data ? a.data.getTime() : 0));
+}
+
+async function carregar(){
+  try {
+    const r = await fetch(URL_CSV, { cache: 'no-store' });
+    if (!r.ok) throw new Error('HTTP ' + r.status);
+    const texto = await r.text();
+    const linhas = lerCSV(texto);
+    if (linhas.length && normalizar(linhas[0][0]) === 'data') linhas.shift();
+    const lista = montar(linhas);
+    if (!lista.length) throw new Error('planilha vazia');
+    todos = lista;
+  } catch (e) {
+    console.warn('Planilha indisponível, usando lista reserva:', e.message);
+    todos = montar(EVENTOS_RESERVA);
+  }
+  desenharFiltros();
+  desenhar();
+}
+
+function el(tag, attrs, filhos){
+  const n = document.createElement(tag);
+  for (const k in (attrs || {})){
+    if (k === 'text') n.textContent = attrs[k];
+    else n.setAttribute(k, attrs[k]);
+  }
+  (filhos || []).forEach(f => f && n.appendChild(f));
+  return n;
+}
+
+function desenharFiltros(){
+  const tipos = ['Todos', ...Array.from(new Set(todos.map(e => e.tipo)))];
+  const caixa = document.getElementById('filtros');
+  caixa.textContent = '';
+  tipos.forEach(t => {
+    const b = el('button', { type: 'button', class: 'chip', 'aria-pressed': String(t === filtroTipo), text: t === 'Todos' ? 'Todos' : t + 's' });
+    b.addEventListener('click', () => { filtroTipo = t; limite = POR_PAGINA; desenharFiltros(); desenhar(); });
+    caixa.appendChild(b);
+  });
+}
+
+function rastroSVG(){
+  const ns = 'http://www.w3.org/2000/svg';
+  const s = document.createElementNS(ns, 'svg');
+  s.setAttribute('viewBox', '0 0 220 60'); s.setAttribute('aria-hidden', 'true');
+  [['0,26 220,20 220,40 0,34', .35], ['40,6 220,2 220,14 40,10', .7], ['40,50 220,46 220,58 40,54', .7]].forEach(([p, o]) => {
+    const pg = document.createElementNS(ns, 'polygon');
+    pg.setAttribute('points', p); pg.setAttribute('fill', '#2F8CFF'); pg.setAttribute('opacity', o);
+    s.appendChild(pg);
+  });
+  return s;
+}
+
+function card(e){
+  const hoje = new Date();
+  const novo = e.data && (hoje - e.data) / 86400000 <= DIAS_NOVO && (hoje - e.data) >= -86400000;
+  const dia = e.data ? String(e.data.getDate()).padStart(2, '0') : '';
+  const mes = e.data ? MESES[e.data.getMonth()] + ' ' + e.data.getFullYear() : e.dataTxt;
+
+  const etiquetas = el('div', { class: 'etiquetas' }, [
+    novo ? el('span', { class: 'tag tag-novo', text: 'NOVO' }) : null,
+    el('span', { class: 'tag', text: e.tipo.toUpperCase() })
+  ]);
+  const topo = el('div', { class: 'card-topo' }, [
+    rastroSVG(),
+    el('div', { class: 'card-data' }, [
+      el('span', { class: 'card-dia', text: dia }),
+      el('span', { class: 'card-mes', text: mes })
+    ]),
+    etiquetas
+  ]);
+  const botao = el('a', {
+    class: 'btn btn-azul', href: e.link, target: '_blank', rel: 'noopener',
+    'aria-label': 'Ver fotos de ' + e.nome + (e.plataforma ? ' no ' + e.plataforma : ''),
+    text: 'Ver fotos'
+  });
+  const corpo = el('div', { class: 'card-corpo' }, [
+    el('h3', { text: e.nome }),
+    e.plataforma ? el('span', { class: 'card-plataforma', text: 'Álbum no ' + e.plataforma }) : null,
+    botao
+  ]);
+  return el('article', { class: 'card' }, [topo, corpo]);
+}
+
+function desenhar(){
+  const grade = document.getElementById('grade');
+  const t = normalizar(termo);
+  const filtrados = todos.filter(e =>
+    (filtroTipo === 'Todos' || e.tipo === filtroTipo) &&
+    (!t || normalizar(e.nome + ' ' + e.tipo + ' ' + e.plataforma).includes(t))
+  );
+  grade.textContent = '';
+  if (!filtrados.length){
+    grade.appendChild(el('div', { class: 'vazio', text: 'Nenhum evento encontrado. Tente outro nome ou fale com a gente no WhatsApp.' }));
+  } else {
+    filtrados.slice(0, limite).forEach(e => grade.appendChild(card(e)));
+  }
+  document.getElementById('mais').hidden = filtrados.length <= limite;
+}
+
+document.getElementById('busca').addEventListener('input', ev => { termo = ev.target.value; limite = POR_PAGINA; desenhar(); });
+document.getElementById('btn-mais').addEventListener('click', () => { limite += POR_PAGINA; desenhar(); });
+carregar();
+</script>
+</body>
+</html>
