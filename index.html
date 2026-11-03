@@ -126,9 +126,10 @@ a:hover{color:#083A84}
 .card-foto{position:relative;aspect-ratio:3/2;background:var(--asfalto);overflow:hidden}
 .card-foto img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
 .card-foto svg{position:absolute;right:-20px;top:50%;transform:translateY(-50%);width:85%;opacity:.55}
-.pill{position:absolute;left:12px;top:12px;display:flex;gap:6px;flex-wrap:wrap}
+.pill{display:flex;gap:6px;flex-wrap:wrap}
 .tag{font-size:12px;font-weight:800;letter-spacing:1.5px;padding:5px 9px;border-radius:6px;background:var(--asfalto);color:var(--neblina)}
-.tag-data{background:var(--papel);color:var(--asfalto)}
+.tag-data{background:var(--asfalto);color:var(--neblina)}
+.tag-tipo-claro{background:var(--azul-claro);color:var(--azul-escuro)}
 .tag-novo{background:var(--laranja);color:var(--asfalto)}
 .tag-tipo{background:var(--azul);color:var(--asfalto)}
 .card-corpo{padding:16px 18px 18px;display:flex;flex-direction:column;gap:10px;flex:1}
@@ -536,13 +537,14 @@ function desenharDestaque(){
   if (!e){ document.getElementById('ultimo').hidden = true; return; }
   const foto = el('div', { class: 'destaque-foto' });
   preencherFoto(foto, e);
+  /* etiquetas ficam fora da foto para não cobrir o atleta */
   const etiquetas = el('div', { class: 'pill' }, [
     ehNovo(e) ? el('span', { class: 'tag tag-novo', text: 'NOVO' }) : null,
     el('span', { class: 'tag tag-tipo', text: e.tipo.toUpperCase() })
   ]);
-  foto.appendChild(etiquetas);
   const dataTxt = e.data ? String(e.data.getDate()).padStart(2, '0') + ' ' + MESES[e.data.getMonth()] + ' ' + e.data.getFullYear() : e.dataTxt;
   const info = el('div', { class: 'destaque-info' }, [
+    etiquetas,
     el('span', { class: 'rotulo', style: 'color:var(--azul)', text: dataTxt }),
     el('h3', { text: e.nome }),
     e.plataforma ? el('span', { class: 'destaque-meta', text: 'Álbum completo no ' + e.plataforma }) : null,
@@ -556,12 +558,14 @@ function card(e){
   const foto = el('div', { class: 'card-foto' });
   preencherFoto(foto, e);
   const dataCurta = e.data ? String(e.data.getDate()).padStart(2, '0') + ' ' + MESES[e.data.getMonth()] : e.dataTxt;
-  foto.appendChild(el('div', { class: 'pill' }, [
+  /* etiquetas ficam fora da foto para não cobrir o atleta */
+  const etiquetas = el('div', { class: 'pill' }, [
     el('span', { class: 'tag tag-data', text: dataCurta }),
     ehNovo(e) ? el('span', { class: 'tag tag-novo', text: 'NOVO' }) : null,
-    el('span', { class: 'tag', text: e.tipo.toUpperCase() })
-  ]));
+    el('span', { class: 'tag tag-tipo-claro', text: e.tipo.toUpperCase() })
+  ]);
   const corpo = el('div', { class: 'card-corpo' }, [
+    etiquetas,
     el('h3', { text: e.nome }),
     e.plataforma ? el('span', { class: 'card-plataforma', text: 'Álbum no ' + e.plataforma + (e.data ? ' · ' + e.data.getFullYear() : '') }) : null,
     linkFotos(e, 'btn btn-azul')
