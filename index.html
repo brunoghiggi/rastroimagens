@@ -271,8 +271,7 @@ a:hover{color:#083A84}
         <h2 class="titulo" id="titulo-como">COMO ACHAR SUA FOTO</h2>
         <div class="passo"><span class="passo-n">1</span><span>Busque o evento ou escolha na lista.</span></div>
         <div class="passo"><span class="passo-n">2</span><span>Clique em <b>Ver fotos</b> para abrir o álbum.</span></div>
-        <div class="passo"><span class="passo-n">3</span><span>Ache suas fotos e finalize a compra na própria plataforma.</span></div>
-        <div class="passos-nota">Os álbuns ficam no <b>Foco Radical</b> e no <b>Fotto</b>, que cuidam do pagamento e da entrega.</div>
+        <div class="passo"><span class="passo-n">3</span><span>Ache suas fotos e finalize a compra direto no álbum.</span></div>
       </section>
     </aside>
 
@@ -302,9 +301,7 @@ a:hover{color:#083A84}
     <div class="rodape-links">
       <a class="btn btn-azul" href="https://www.instagram.com/rastroimagens/" target="_blank" rel="noopener">Instagram</a>
       <a class="btn btn-escuro" style="border:1.5px solid #3A4045" href="https://wa.me/5554991545485" target="_blank" rel="noopener">WhatsApp</a>
-    </div>
-    <div>Fotos vendidas via <a href="https://www.focoradical.com.br" target="_blank" rel="noopener">Foco Radical</a> e <a href="https://www.fotto.com.br" target="_blank" rel="noopener">Fotto</a></div>
-  </div>
+    </div>  </div>
 </footer>
 
 <script>
@@ -462,8 +459,8 @@ function ehNovo(e){
 function linkFotos(e, classe){
   const a = el('a', {
     class: classe, href: e.link, target: '_blank', rel: 'noopener',
-    'aria-label': 'Ver fotos de ' + e.nome + (e.plataforma ? ' no ' + e.plataforma : ''),
-    text: e.plataforma ? 'Ver fotos no ' + e.plataforma : 'Ver fotos'
+    'aria-label': 'Ver fotos de ' + e.nome,
+    text: 'Ver fotos'
   });
   a.addEventListener('click', () => rastrear('ver_fotos', {
     evento: e.nome, plataforma: e.plataforma || 'Outra', tipo_evento: e.tipo, data_evento: e.dataTxt, link_url: e.link
@@ -546,7 +543,7 @@ function desenharDestaque(){
     etiquetas,
     el('span', { class: 'rotulo', style: 'color:var(--azul)', text: dataTxt }),
     el('h3', { text: e.nome }),
-    e.plataforma ? el('span', { class: 'destaque-meta', text: 'Álbum completo no ' + e.plataforma }) : null,
+    el('span', { class: 'destaque-meta', text: 'Álbum completo do evento' }),
     linkFotos(e, 'btn btn-laranja')
   ]);
   caixa.appendChild(el('article', { class: 'destaque' }, [foto, info]));
@@ -566,7 +563,7 @@ function card(e){
   const corpo = el('div', { class: 'card-corpo' }, [
     etiquetas,
     el('h3', { text: e.nome }),
-    e.plataforma ? el('span', { class: 'card-plataforma', text: 'Álbum no ' + e.plataforma + (e.data ? ' · ' + e.data.getFullYear() : '') }) : null,
+    el('span', { class: 'card-plataforma', text: 'Álbum completo' + (e.data ? ' · ' + e.data.getFullYear() : '') }),
     linkFotos(e, 'btn btn-azul')
   ]);
   return el('article', { class: 'card' }, [foto, corpo]);
@@ -580,7 +577,7 @@ function desenhar(){
   const base = buscando ? todos : todos.slice(1);
   const filtrados = base.filter(e =>
     (filtroTipo === 'Todos' || e.tipo === filtroTipo) &&
-    (!t || normalizar(e.nome + ' ' + e.tipo + ' ' + e.plataforma).includes(t))
+    (!t || normalizar(e.nome + ' ' + e.tipo).includes(t))
   );
   document.getElementById('ultimo').hidden = buscando || !todos.length;
   document.getElementById('titulo-albuns').textContent = buscando ? 'RESULTADOS' : 'ÁLBUNS';
