@@ -11,6 +11,28 @@
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://rastroimagens.com.br/">
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='12' fill='%2316191C'/%3E%3Ctext x='18' y='48' font-family='Arial Black,Arial,sans-serif' font-weight='900' font-size='44' fill='%232F8CFF' opacity='.45'%3ER%3C/text%3E%3Ctext x='26' y='48' font-family='Arial Black,Arial,sans-serif' font-weight='900' font-size='44' fill='%232F8CFF'%3ER%3C/text%3E%3C/svg%3E">
+<script>
+/* ============================================================
+   GOOGLE ANALYTICS (GA4)
+   Troque pelo seu ID de métricas (formato G-XXXXXXXXXX).
+   Enquanto estiver G-XXXXXXXXXX, nada é carregado.
+   ============================================================ */
+const GA_ID = 'G-XXXXXXXXXX';
+window.dataLayer = window.dataLayer || [];
+function gtag(){ dataLayer.push(arguments); }
+if (/^G-[A-Z0-9]+$/.test(GA_ID) && GA_ID !== 'G-XXXXXXXXXX') {
+  const s = document.createElement('script');
+  s.async = true;
+  s.src = 'https://www.googletagmanager.com/gtag/js?id=' + GA_ID;
+  document.head.appendChild(s);
+  gtag('js', new Date());
+  gtag('config', GA_ID);
+}
+/* Envia um evento ao GA4 (não faz nada se o GA não estiver ativo) */
+function rastrear(nome, dados){
+  try { gtag('event', nome, Object.assign({ transport_type: 'beacon' }, dados || {})); } catch (e) {}
+}
+</script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,400..900&display=swap">
@@ -30,6 +52,7 @@
 }
 *{box-sizing:border-box}
 html{scroll-behavior:smooth}
+section[id]{scroll-margin-top:84px}
 body{margin:0;background:var(--neblina);color:var(--asfalto);font-family:'Archivo',system-ui,sans-serif;font-size:17px;line-height:1.5;-webkit-font-smoothing:antialiased}
 img{max-width:100%;display:block}
 a{color:var(--azul-escuro)}
@@ -94,6 +117,22 @@ a:hover{color:#083A84}
 .mais{display:flex;justify-content:center;margin-top:28px}
 .mais[hidden]{display:none}
 
+/* Agenda */
+.agenda{display:flex;flex-direction:column;gap:12px}
+.ag-item{display:grid;grid-template-columns:96px minmax(0,1fr) auto;gap:20px;align-items:center;background:var(--papel);border:1px solid var(--linha);border-radius:var(--raio);padding:16px 20px}
+.ag-data{background:var(--asfalto);color:var(--neblina);border-radius:10px;text-align:center;padding:10px 6px;line-height:1}
+.ag-dia{display:block;font-weight:900;font-stretch:125%;font-size:34px}
+.ag-mes{display:block;font-weight:700;font-size:12px;letter-spacing:2px;color:var(--azul);margin-top:6px}
+.ag-info h3{margin:0 0 4px;font-size:19px;line-height:1.25}
+.ag-meta{font-size:15px;color:var(--texto-2)}
+.ag-item .btn{min-width:150px}
+.ag-nota{margin-top:16px;font-size:15px;color:var(--texto-2)}
+@media (max-width:720px){
+  .ag-item{grid-template-columns:72px minmax(0,1fr);gap:14px;padding:14px}
+  .ag-dia{font-size:28px}
+  .ag-item .btn{grid-column:1/-1;width:100%}
+}
+
 /* Como funciona */
 .passos{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:20px}
 .passo{background:var(--papel);border-radius:var(--raio);padding:24px;border:1px solid var(--linha)}
@@ -151,6 +190,7 @@ a:hover{color:#083A84}
     </a>
     <nav class="menu" aria-label="Principal">
       <a href="#eventos">Eventos</a>
+      <a href="#agenda">Agenda</a>
       <a href="#como-funciona">Como funciona</a>
       <!-- <a href="#videos">Vídeos</a> -->
       <a href="#sobre">Sobre</a>
@@ -193,6 +233,16 @@ a:hover{color:#083A84}
       <div class="mais" id="mais" hidden>
         <button class="btn btn-escuro" type="button" id="btn-mais">Ver eventos anteriores</button>
       </div>
+    </div>
+  </section>
+
+  <section class="secao" id="agenda" aria-labelledby="titulo-agenda" style="padding-top:0">
+    <div class="wrap">
+      <div class="secao-titulo"><h2 id="titulo-agenda">PRÓXIMOS EVENTOS</h2></div>
+      <div class="agenda" id="lista-agenda" aria-live="polite">
+        <div class="esqueleto" style="height:96px"></div><div class="esqueleto" style="height:96px"></div>
+      </div>
+      <p class="ag-nota">Vai participar? A Rastro Imagens vai estar no percurso fotografando. Procure a camiseta azul.</p>
     </div>
   </section>
 
@@ -280,6 +330,25 @@ const EVENTOS_RESERVA = [
   ['11/10/2026','1° Desafio Entre Trilhos e Fé','Corrida','Foco Radical','https://ghiggi.focoradical.com.br/evento/20261011-1o-desafio-entre-trilhos-e-fe-guapore-19127?loja=brgh'],
   ['03/10/2026','Wine Run Vale dos Vinhedos','Corrida','Foco Radical','https://ghiggi.focoradical.com.br/evento/20261003-wine-run-vale-dos-vinhedos-bento-goncalves-9407?loja=brgh'],
   ['26/09/2026','12ª Sparkling Night Run','Corrida','Foco Radical','https://ghiggi.focoradical.com.br/evento/20260926-sparkling-nigth-run-12a-edicao-bento-goncalves-15165?loja=brgh']
+];
+
+/* ------------------------------------------------------------
+   AGENDA: aba "Agenda" da mesma planilha
+   (colunas: Data, Horário, Evento, Cidade, Tipo, Link)
+   Só aparecem eventos de hoje em diante.
+   ------------------------------------------------------------ */
+const ABA_AGENDA = 'Agenda';
+const URL_AGENDA = 'https://docs.google.com/spreadsheets/d/' + PLANILHA_ID + '/gviz/tq?tqx=out:csv&sheet=' + encodeURIComponent(ABA_AGENDA);
+
+/* Usada só se a aba Agenda não carregar */
+const AGENDA_RESERVA = [
+  ['08/11/2026','08:00','10 Milhas Borbulhantes','Garibaldi','Corrida','https://www.10milhasborbulhantes.com.br/'],
+  ['15/11/2026','07:00','Corrida e Caminhada Sest Senat – Caxias do Sul','Caxias do Sul','Corrida','https://www.eventooficial.com.br/evento/2026/corrida-de-rua/corrida-e-caminhada-sest-senat-caxias-do-sul'],
+  ['22/11/2026','08:30','Patas Run – 1ª edição','Bento Gonçalves','Corrida','https://bento.tur.br/calendario-de-programacoes-diarias/patas-run-passos-que-salvam-vidas/'],
+  ['28/11/2026','17:00','Corrida e Caminhada SEST SENAT – Bento Gonçalves','Bento Gonçalves','Corrida','https://www.instagram.com/p/De_trt0kd10/'],
+  ['06/12/2026','09:30','Corrida i-Run – Santa Claus Challenge','Canela','Corrida','https://www.ticketsports.com.br/e/corrida-i-run-corrida-santa-claus-challenge-88333'],
+  ['12/12/2026','17:00','Corrida OAB (Corrida da Advocacia)','Porto Alegre','Corrida','https://www.ticketsports.com.br/e/6a-corrida-da-advocacia-88376'],
+  ['20/12/2026','08:00','Mamonas Assassinas Run – Etapa Montenegro','Montenegro','Corrida','']
 ];
 
 const MESES = ['JAN','FEV','MAR','ABR','MAI','JUN','JUL','AGO','SET','OUT','NOV','DEZ'];
@@ -406,6 +475,13 @@ function card(e){
     'aria-label': 'Ver fotos de ' + e.nome + (e.plataforma ? ' no ' + e.plataforma : ''),
     text: 'Ver fotos'
   });
+  botao.addEventListener('click', () => rastrear('ver_fotos', {
+    evento: e.nome,
+    plataforma: e.plataforma || 'Outra',
+    tipo_evento: e.tipo,
+    data_evento: e.dataTxt,
+    link_url: e.link
+  }));
   const corpo = el('div', { class: 'card-corpo' }, [
     el('h3', { text: e.nome }),
     e.plataforma ? el('span', { class: 'card-plataforma', text: 'Álbum no ' + e.plataforma }) : null,
@@ -430,7 +506,86 @@ function desenhar(){
   document.getElementById('mais').hidden = filtrados.length <= limite;
 }
 
+/* ---------- Agenda ---------- */
+function montarAgenda(linhas){
+  const hoje = new Date(); hoje.setHours(0, 0, 0, 0);
+  return linhas
+    .map(l => ({
+      data: paraData(l[0]),
+      hora: (l[1] || '').trim(),
+      nome: (l[2] || '').trim(),
+      cidade: (l[3] || '').trim(),
+      tipo: (l[4] || '').trim(),
+      link: (l[5] || '').trim()
+    }))
+    .filter(e => e.nome && e.data && e.data >= hoje)
+    .sort((a, b) => a.data - b.data);
+}
+
+async function carregarAgenda(){
+  let lista;
+  try {
+    const r = await fetch(URL_AGENDA, { cache: 'no-store' });
+    if (!r.ok) throw new Error('HTTP ' + r.status);
+    const linhas = lerCSV(await r.text());
+    /* confere o cabeçalho: se a aba não existir, o Google devolve a primeira aba */
+    const cab = (linhas[0] || []).map(normalizar);
+    if (cab[0] !== 'data' || cab[1] !== 'horario') throw new Error('aba Agenda não encontrada');
+    linhas.shift();
+    lista = montarAgenda(linhas);
+  } catch (e) {
+    console.warn('Agenda indisponível, usando lista reserva:', e.message);
+    lista = montarAgenda(AGENDA_RESERVA);
+  }
+  desenharAgenda(lista);
+}
+
+function desenharAgenda(lista){
+  const caixa = document.getElementById('lista-agenda');
+  caixa.textContent = '';
+  if (!lista.length){
+    caixa.appendChild(el('div', { class: 'vazio', text: 'Nenhum evento agendado no momento. Acompanhe no Instagram.' }));
+    return;
+  }
+  lista.forEach(e => {
+    const meta = [e.cidade, e.hora ? 'largada ' + e.hora : '', e.tipo].filter(Boolean).join(' · ');
+    const item = el('article', { class: 'ag-item' }, [
+      el('div', { class: 'ag-data' }, [
+        el('span', { class: 'ag-dia', text: String(e.data.getDate()).padStart(2, '0') }),
+        el('span', { class: 'ag-mes', text: MESES[e.data.getMonth()] })
+      ]),
+      el('div', { class: 'ag-info' }, [
+        el('h3', { text: e.nome }),
+        el('div', { class: 'ag-meta', text: meta })
+      ])
+    ]);
+    if (/^https?:\/\//i.test(e.link)){
+      const a = el('a', { class: 'btn btn-escuro', href: e.link, target: '_blank', rel: 'noopener', 'aria-label': 'Mais informações sobre ' + e.nome, text: 'Mais informações' });
+      a.addEventListener('click', () => rastrear('agenda_click', { evento: e.nome, cidade: e.cidade, link_url: e.link }));
+      item.appendChild(a);
+    }
+    caixa.appendChild(item);
+  });
+}
+
 document.getElementById('busca').addEventListener('input', ev => { termo = ev.target.value; limite = POR_PAGINA; desenhar(); });
+carregarAgenda();
+
+/* Cliques em WhatsApp e Instagram */
+document.querySelectorAll('a[href*="wa.me"], a[href*="instagram.com"]').forEach(a => {
+  a.addEventListener('click', () => rastrear('contato', {
+    canal: a.href.includes('wa.me') ? 'WhatsApp' : 'Instagram',
+    link_url: a.href
+  }));
+});
+
+/* Termo buscado (envia 1,5 s depois que a pessoa para de digitar) */
+let timerBusca;
+document.getElementById('busca').addEventListener('input', ev => {
+  clearTimeout(timerBusca);
+  const t = ev.target.value.trim();
+  if (t.length >= 3) timerBusca = setTimeout(() => rastrear('search', { search_term: t }), 1500);
+});
 document.getElementById('btn-mais').addEventListener('click', () => { limite += POR_PAGINA; desenhar(); });
 carregar();
 </script>
