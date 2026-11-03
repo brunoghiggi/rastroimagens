@@ -101,6 +101,13 @@ a:hover{color:#083A84}
 .card{background:var(--papel);border-radius:var(--raio);overflow:hidden;display:flex;flex-direction:column;border:1px solid var(--linha)}
 .card-topo{position:relative;background:var(--asfalto);color:var(--neblina);padding:20px 20px 18px;min-height:132px;display:flex;flex-direction:column;justify-content:space-between;gap:12px;overflow:hidden}
 .card-topo svg{position:absolute;right:-20px;bottom:14px;width:180px;opacity:.55}
+.card-topo.com-foto{aspect-ratio:16/10;min-height:0;justify-content:space-between}
+.card-foto{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.card-topo.com-foto::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(22,25,28,.55) 0%,rgba(22,25,28,0) 40%,rgba(22,25,28,0) 60%,rgba(22,25,28,.6) 100%);pointer-events:none}
+.card-topo.com-foto>*:not(.card-foto){z-index:1}
+.card-topo.com-foto .card-mes{color:var(--neblina)}
+.card-topo.com-foto .tag{background:rgba(22,25,28,.8)}
+.card-topo.com-foto .tag-novo{background:var(--azul)}
 .card-data{position:relative;display:flex;align-items:baseline;gap:8px}
 .card-dia{font-weight:900;font-stretch:125%;font-size:40px;line-height:1}
 .card-mes{font-weight:700;font-size:14px;letter-spacing:2px;color:var(--concreto)}
@@ -313,7 +320,11 @@ a:hover{color:#083A84}
 /* ============================================================
    CONFIGURAÇÃO
    Os eventos vêm da planilha Google "Eventos"
-   (colunas: Data, Evento, Tipo, Plataforma, Link).
+   (colunas: Data, Evento, Tipo, Plataforma, Link, Imagem).
+   Coluna Imagem (opcional), aceita:
+     - link de compartilhamento do Google Drive (arquivo público)
+     - link direto de uma imagem (https://...jpg)
+     - nome de um arquivo da pasta "miniaturas" do site (ex.: wine-run.jpg)
    A planilha precisa estar compartilhada como
    "Qualquer pessoa com o link: Leitor".
    ============================================================ */
@@ -387,6 +398,17 @@ function normalizar(s){
   return String(s || '').normalize('NFD').replace(/[̀-ͯ]/g,'').toLowerCase().trim();
 }
 
+/* Converte o valor da coluna Imagem numa URL que o navegador consegue exibir */
+function urlImagem(v){
+  v = String(v || '').trim();
+  if (!v) return '';
+  const drive = v.match(/drive\.google\.com\/(?:file\/d\/|open\?id=|uc\?(?:export=\w+&)?id=)([\w-]{20,})/);
+  if (drive) return 'https://lh3.googleusercontent.com/d/' + drive[1] + '=w900';
+  if (/^https?:\/\//i.test(v)) return v;
+  if (/^[\w.\-\/]+\.(jpe?g|png|webp)$/i.test(v)) return 'miniaturas/' + v.replace(/^\/?(miniaturas\/)?/, '');
+  return '';
+}
+
 function montar(linhas){
   return linhas
     .map(l => ({
@@ -395,7 +417,8 @@ function montar(linhas){
       nome: (l[1] || '').trim(),
       tipo: (l[2] || '').trim() || 'Evento',
       plataforma: (l[3] || '').trim(),
-      link: (l[4] || '').trim()
+      link: (l[4] || '').trim(),
+      imagem: urlImagem(l[5])
     }))
     .filter(e => e.nome && /^https?:\/\//i.test(e.link))
     .sort((a, b) => (b.data ? b.data.getTime() : 0) - (a.data ? a.data.getTime() : 0));
@@ -462,14 +485,20 @@ function card(e){
     novo ? el('span', { class: 'tag tag-novo', text: 'NOVO' }) : null,
     el('span', { class: 'tag', text: e.tipo.toUpperCase() })
   ]);
-  const topo = el('div', { class: 'card-topo' }, [
-    rastroSVG(),
+  const topo = el('div', { class: 'card-topo' + (e.imagem ? ' com-foto' : '') }, [
+    e.imagem ? null : rastroSVG(),
     el('div', { class: 'card-data' }, [
       el('span', { class: 'card-dia', text: dia }),
       el('span', { class: 'card-mes', text: mes })
     ]),
     etiquetas
   ]);
+  if (e.imagem){
+    const img = el('img', { class: 'card-foto', src: e.imagem, alt: 'Foto do evento ' + e.nome, loading: 'lazy', decoding: 'async' });
+    /* se a imagem não carregar, volta para o visual sem foto */
+    img.addEventListener('error', () => { img.remove(); topo.classList.remove('com-foto'); topo.prepend(rastroSVG()); });
+    topo.prepend(img);
+  }
   const botao = el('a', {
     class: 'btn btn-azul', href: e.link, target: '_blank', rel: 'noopener',
     'aria-label': 'Ver fotos de ' + e.nome + (e.plataforma ? ' no ' + e.plataforma : ''),
