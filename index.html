@@ -159,6 +159,9 @@ a:hover{color:#083A84}
 .mosaico{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));grid-auto-rows:180px;gap:10px}
 .mosaico a{position:relative;display:block;border-radius:10px;overflow:hidden;background:var(--asfalto)}
 .mosaico a:first-child{grid-column:span 2;grid-row:span 2}
+/* com menos de 5 fotos, as pequenas se alargam para a grade fechar sem buracos */
+.mosaico.n4 a:last-child{grid-column:span 2}
+.mosaico.n3 a:not(:first-child){grid-column:span 2}
 .mosaico img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;transition:transform .3s ease}
 .mosaico a:hover img{transform:scale(1.04)}
 
@@ -625,6 +628,7 @@ function desenharMomentos(){
   if (fotos.length < 3){ secao.hidden = true; return; }
   const caixa = document.getElementById('mosaico');
   caixa.textContent = '';
+  caixa.className = 'mosaico n' + fotos.length;
   fotos.forEach(e => {
     const a = el('a', { href: e.link, target: '_blank', rel: 'noopener', 'aria-label': 'Ver fotos de ' + e.nome });
     preencherFoto(a, e);
