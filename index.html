@@ -5,12 +5,12 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>Rastro Imagens · Fotos e vídeos de corridas, motos e carros</title>
 <meta name="description" content="Encontre suas fotos e vídeos de corridas, passeios de moto e carros na Serra Gaúcha. Escolha o evento e veja o álbum completo.">
-<meta name="theme-color" content="#FFFFFF">
+<meta name="theme-color" content="#16191C">
 <meta property="og:title" content="Rastro Imagens">
 <meta property="og:description" content="Seu movimento deixou um rastro. Ache suas fotos e vídeos.">
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://rastroimagens.com.br/">
-<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='12' fill='%23111111'/%3E%3Ctext x='32' y='50' text-anchor='middle' font-family='Arial Narrow,Arial,sans-serif' font-weight='900' font-size='48' fill='%23FFFFFF'%3ER%3C/text%3E%3C/svg%3E">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='12' fill='%2316191C'/%3E%3Ctext x='18' y='48' font-family='Arial Black,Arial,sans-serif' font-weight='900' font-size='44' fill='%232F8CFF' opacity='.45'%3ER%3C/text%3E%3Ctext x='26' y='48' font-family='Arial Black,Arial,sans-serif' font-weight='900' font-size='44' fill='%232F8CFF'%3ER%3C/text%3E%3C/svg%3E">
 <script>
 /* ============================================================
    GOOGLE ANALYTICS (GA4)
@@ -35,265 +35,288 @@ function rastrear(nome, dados){
 </script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,500..900&family=Inter:wght@400;500;600&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,400..900&display=swap">
 <style>
-/* Layout esportivo — ver DESIGN.md
-   Foto em primeiro lugar; título condensado gigante sobre a foto de capa,
-   interface neutra em preto/branco/cinza, um único azul da marca. */
+/* Layout "Site A · Vitrine" da identidade visual (pasta identidade-visual) — ver DESIGN.md
+   Foto em primeiro lugar: capa com foto grande, busca e filtros; último evento;
+   grade de álbuns; agenda em faixa escura; melhores momentos; chamada para organizadores. */
 :root{
-  --tinta:#111111;
-  --branco:#FFFFFF;
-  --nuvem:#F4F5F6;
-  --grafite:#3A3B3D;
-  --cinza:#707274;
-  --cinza-claro:#B5B6B8;
-  --fio:#D6D7D9;
+  --asfalto:#16191C;
+  --asfalto-2:#22272B;
   --azul:#2F8CFF;
-  --display:'Archivo','Arial Narrow',Arial,sans-serif;
-  --texto:'Inter',system-ui,-apple-system,'Segoe UI',sans-serif;
-  --pilula:999px;
-  color-scheme:light;
+  --azul-escuro:#0B4FB3;
+  --neblina:#F7F5F0;
+  --papel:#FFFFFF;
+  --concreto:#A3A9AE;
+  --texto-2:#4F565C;
+  --linha:#E2DED5;
+  --whatsapp:#25D366;
+  --raio:14px;
+  --max:1200px;
 }
 *{box-sizing:border-box}
 html{scroll-behavior:smooth}
 section[id]{scroll-margin-top:72px}
-body{margin:0;background:var(--branco);color:var(--tinta);font-family:var(--texto);font-size:16px;line-height:1.5;-webkit-font-smoothing:antialiased}
+body{margin:0;background:var(--neblina);color:var(--asfalto);font-family:'Archivo',system-ui,sans-serif;font-size:17px;line-height:1.5;-webkit-font-smoothing:antialiased}
 img{max-width:100%;display:block}
-a{color:inherit}
-:focus-visible{outline:2px solid var(--azul);outline-offset:3px}
-.faixa{padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}
-.miolo{max-width:1440px;margin:0 auto}
+a{color:var(--azul-escuro)}
+a:hover{color:#083A84}
+:focus-visible{outline:3px solid var(--azul);outline-offset:3px}
+.wrap{max-width:var(--max);margin:0 auto;padding-left:max(20px,env(safe-area-inset-left,0px));padding-right:max(20px,env(safe-area-inset-right,0px))}
 .sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}
+.titulo{margin:0;font-weight:900;font-stretch:125%;font-size:clamp(26px,3.4vw,34px);line-height:1}
+.rotulo{font-weight:800;font-size:13px;letter-spacing:3px;color:var(--texto-2)}
+.cab-secao{display:flex;justify-content:space-between;align-items:flex-end;gap:16px;flex-wrap:wrap;margin-bottom:20px}
+.cab-secao a{font-weight:700}
 
-/* Barra de utilidade */
-.util{background:var(--nuvem);font-size:12px;font-weight:500}
-.util .miolo{display:flex;justify-content:space-between;align-items:center;gap:4px 12px;min-height:36px;flex-wrap:wrap;padding-block:6px}
-.util a{text-decoration:none}
-.util a:hover{text-decoration:underline}
+/* Botões */
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;min-height:52px;padding:0 26px;border-radius:8px;border:0;font:inherit;font-weight:800;font-size:16px;text-decoration:none;cursor:pointer}
+.btn-azul{background:var(--azul);color:var(--asfalto)}
+.btn-azul:hover{background:#5AA4FF;color:var(--asfalto)}
+.btn-escuro{background:var(--asfalto);color:var(--neblina)}
+.btn-escuro:hover{background:#2C3236;color:var(--neblina)}
 
-/* Menu */
-.topo{position:sticky;top:0;z-index:20;background:var(--branco);box-shadow:inset 0 -1px 0 var(--nuvem)}
-.topo .miolo{display:flex;align-items:center;gap:12px 28px;min-height:60px;flex-wrap:wrap;padding-block:8px}
-.marca{font-family:var(--display);font-stretch:62%;font-weight:900;font-size:30px;line-height:1;letter-spacing:.01em;text-decoration:none;text-transform:uppercase}
-.marca span{color:var(--cinza);font-weight:600}
-.menu{display:flex;gap:4px 24px;flex-wrap:wrap;font-weight:500}
-.menu a{text-decoration:none;padding:8px 0}
-.menu a:hover{box-shadow:inset 0 -2px 0 var(--tinta)}
-.busca{margin:0 0 0 auto;flex:0 1 300px;min-width:0}
-.busca label{display:flex;align-items:center;gap:8px;background:var(--nuvem);border-radius:var(--pilula);padding:0 16px;height:40px;cursor:text}
-.busca label:focus-within{background:var(--branco);box-shadow:0 0 0 1px var(--tinta)}
-.busca svg{flex-shrink:0}
-.busca input{border:0;background:transparent;font:inherit;min-width:0;width:100%;color:var(--tinta);outline:none}
-.busca input::placeholder{color:var(--cinza)}
+/* Cabeçalho */
+.topo{background:var(--asfalto);color:var(--neblina);position:sticky;top:0;z-index:20}
+.topo .wrap{display:flex;align-items:center;gap:8px 20px;min-height:64px;flex-wrap:wrap;padding-top:6px;padding-bottom:6px}
+.marca{display:flex;align-items:center;gap:10px;text-decoration:none;color:var(--neblina)}
+.marca:hover{color:var(--neblina)}
+.marca-nome{font-weight:900;font-stretch:125%;font-size:21px;white-space:nowrap}
+.marca-nome span{font-weight:700;font-size:11px;letter-spacing:5px;color:var(--azul)}
+.menu{display:flex;gap:2px 22px;margin-left:auto;flex-wrap:wrap;align-items:center;font-size:15px}
+.menu a{color:var(--neblina);text-decoration:none;padding:10px 0}
+.menu a:hover{color:var(--azul)}
+.menu .ig{display:inline-flex;align-items:center;justify-content:center;width:44px;height:44px;padding:0}
 
 /* Capa */
-.capa{position:relative;background:var(--tinta);color:var(--branco);overflow:hidden;min-height:420px}
-.capa-foto{height:clamp(420px,62vw,720px)}
+.capa{position:relative;min-height:560px;background:var(--asfalto);display:flex;align-items:flex-end;overflow:hidden;color:var(--neblina)}
+.capa-foto{position:absolute;inset:0}
 .capa-foto img{width:100%;height:100%;object-fit:cover;object-position:center 40%}
-.capa-foto svg{position:absolute;left:8%;top:30%;width:84%;opacity:.35}
-.capa::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(17,17,17,0) 35%,rgba(17,17,17,.82) 100%);pointer-events:none}
-.capa-texto{position:absolute;inset:auto 0 0 0;z-index:1;padding-block:0 40px}
-.capa-texto .miolo{display:flex;flex-direction:column;align-items:flex-start;gap:14px}
-.capa h1{margin:0;font-family:var(--display);font-stretch:62%;font-weight:900;font-size:clamp(56px,10.5vw,148px);line-height:.86;text-transform:uppercase;letter-spacing:-.005em;max-width:12ch;text-wrap:balance}
-.capa .info{margin:0;font-weight:500;font-size:15px}
-.capa .info b{font-weight:600}
-.capa .info .novo{display:inline-block;margin-right:6px;font-size:12px;font-weight:600;padding:2px 10px;border-radius:var(--pilula);background:var(--azul);color:var(--tinta)}
-.acoes{display:flex;gap:10px;flex-wrap:wrap}
-
-/* Botões pílula */
-.btn{display:inline-flex;align-items:center;justify-content:center;height:48px;padding:0 28px;border-radius:var(--pilula);font:inherit;font-weight:500;text-decoration:none;border:0;cursor:pointer;transition:background-color .15s,color .15s}
-.btn-branco{background:var(--branco);color:var(--tinta)}
-.btn-branco:hover{background:var(--fio)}
-.btn-contorno{background:transparent;color:var(--branco);box-shadow:inset 0 0 0 1.5px var(--branco)}
-.btn-contorno:hover{background:var(--branco);color:var(--tinta)}
-.btn-preto{background:var(--tinta);color:var(--branco)}
-.btn-preto:hover{background:var(--grafite)}
+.capa-foto svg{position:absolute;right:-40px;top:22%;width:640px;max-width:90%;opacity:.5}
+.capa::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(22,25,28,0) 30%,rgba(22,25,28,.85) 100%);pointer-events:none}
+.capa .wrap{position:relative;z-index:1;width:100%;padding-top:96px;padding-bottom:48px;display:flex;flex-direction:column;gap:18px}
+.capa h1{margin:0;max-width:760px;font-weight:900;font-stretch:125%;font-size:clamp(38px,6.4vw,64px);line-height:.95;text-wrap:balance}
+.busca{display:flex;gap:8px;max-width:640px;flex-wrap:wrap}
+.busca input{flex:1 1 260px;min-width:0;height:56px;border:0;border-radius:8px;padding:0 18px;font:inherit;font-size:17px;background:var(--neblina);color:var(--asfalto)}
+.busca input::placeholder{color:#6B7277}
+.busca .btn{height:56px}
+.filtros{display:flex;gap:8px;flex-wrap:wrap}
+.chip{min-height:44px;padding:0 18px;border-radius:999px;border:1.5px solid var(--neblina);background:transparent;color:var(--neblina);font:inherit;font-weight:700;font-size:14px;cursor:pointer}
+.chip:hover{background:rgba(247,245,240,.12)}
+.chip[aria-pressed="true"]{background:var(--neblina);color:var(--asfalto)}
 
 /* Seções */
-.secao{padding-block:48px}
-.cab{display:flex;justify-content:space-between;align-items:flex-end;gap:16px;flex-wrap:wrap;margin-bottom:24px}
-.cab h2{margin:0;font-family:var(--display);font-stretch:100%;font-weight:600;font-size:28px;line-height:1.2}
-.chips{display:flex;gap:8px;flex-wrap:wrap}
-.chip{height:40px;padding:0 18px;border-radius:var(--pilula);border:1px solid var(--fio);background:var(--branco);font:inherit;font-weight:500;cursor:pointer;color:var(--tinta)}
-.chip:hover{border-color:var(--tinta)}
-.chip[aria-pressed="true"]{background:var(--tinta);border-color:var(--tinta);color:var(--branco)}
+.secao{padding-top:56px}
 
-/* Grade de álbuns: a foto é o cartão */
-.grade{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:40px 12px}
-.album{display:flex;flex-direction:column;gap:12px;text-decoration:none;min-width:0}
-.album-foto{position:relative;aspect-ratio:4/3;background:var(--tinta);overflow:hidden;max-width:100%}
-.album-foto img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;transition:transform .35s cubic-bezier(.2,.7,.2,1)}
-.album-foto svg{position:absolute;left:10%;top:50%;transform:translateY(-50%);width:80%;opacity:.4}
-.album:hover .album-foto img{transform:scale(1.04)}
-.album-texto{display:flex;flex-direction:column;gap:2px;padding-right:8px}
-.album-tipo{font-size:14px;font-weight:500;color:var(--cinza)}
-.album-tipo .novo{color:var(--azul);font-weight:600}
-.album-nome{font-weight:600;font-size:16px}
-.album-data{font-size:14px;color:var(--cinza)}
-.album-ver{margin-top:8px;font-weight:500;font-size:14px;text-decoration:underline;text-underline-offset:4px}
-.vazio{grid-column:1/-1;background:var(--nuvem);padding:40px;text-align:center;color:var(--grafite)}
-.esqueleto{background:linear-gradient(90deg,#EDEEF0,#F6F7F8,#EDEEF0);background-size:200% 100%;animation:brilho 1.2s infinite linear}
+/* Último evento */
+.destaque{margin-top:14px;display:grid;grid-template-columns:repeat(auto-fit,minmax(min(320px,100%),1fr));background:var(--asfalto);color:var(--neblina);border-radius:var(--raio);overflow:hidden}
+.destaque-foto{position:relative;min-height:360px;background:var(--asfalto-2);overflow:hidden}
+.destaque-foto img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.destaque-foto svg{position:absolute;left:-30px;top:50%;transform:translateY(-50%);width:120%;opacity:.5}
+.destaque-info{padding:40px;display:flex;flex-direction:column;justify-content:center;gap:14px}
+.destaque-chapeu{display:flex;gap:10px;align-items:center;flex-wrap:wrap;font-weight:700;font-size:14px;letter-spacing:3px;color:var(--azul)}
+.destaque-info h2{margin:0;font-weight:900;font-stretch:125%;font-size:clamp(30px,4vw,44px);line-height:.95;text-transform:uppercase}
+.destaque-meta{margin:0;font-size:17px;color:var(--concreto)}
+.destaque-info .btn{align-self:flex-start;margin-top:8px}
+
+/* Grade de álbuns */
+.grade{display:grid;grid-template-columns:repeat(auto-fill,minmax(min(260px,100%),1fr));gap:20px}
+.card{display:flex;flex-direction:column;background:var(--papel);border-radius:12px;overflow:hidden;text-decoration:none;color:var(--asfalto);border:1px solid var(--linha);transition:transform .15s ease,box-shadow .15s ease}
+.card:hover{color:var(--asfalto);transform:translateY(-3px);box-shadow:0 10px 24px rgba(22,25,28,.10)}
+.card-foto{position:relative;aspect-ratio:3/2;background:var(--asfalto);overflow:hidden}
+.card-foto img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.card-foto svg{position:absolute;right:-20px;top:50%;transform:translateY(-50%);width:85%;opacity:.55}
+.card-corpo{padding:14px 16px 16px;display:flex;flex-direction:column;gap:6px}
+.card-nome{font-weight:800;font-size:17px;line-height:1.25}
+.card-meta{font-size:14px;color:var(--texto-2)}
+.pill{display:flex;gap:6px;flex-wrap:wrap}
+.tag{font-size:12px;font-weight:800;letter-spacing:1.5px;padding:5px 9px;border-radius:6px;background:var(--asfalto);color:var(--neblina)}
+.tag-novo{background:var(--azul);color:var(--asfalto)}
+.tag-tipo{background:#DCEBFF;color:var(--azul-escuro)}
+.vazio{grid-column:1/-1;background:var(--papel);border:1px dashed #C9C4B8;border-radius:12px;padding:32px;text-align:center;color:var(--texto-2)}
+.esqueleto{border-radius:12px;background:linear-gradient(90deg,#ECE9E2,#F4F2EC,#ECE9E2);background-size:200% 100%;animation:brilho 1.2s infinite linear}
 @keyframes brilho{to{background-position:-200% 0}}
-.mais{display:flex;justify-content:center;margin-top:40px}
+.mais{display:flex;justify-content:center;margin-top:24px}
 .mais[hidden]{display:none}
 
-/* Faixa preta da agenda */
-.agenda{background:var(--tinta);color:var(--branco)}
-.agenda .miolo{display:grid;grid-template-columns:minmax(0,5fr) minmax(0,7fr);gap:32px 64px;padding-block:72px}
-.agenda h2{margin:0;font-family:var(--display);font-stretch:62%;font-weight:900;font-size:clamp(56px,8vw,112px);line-height:.86;text-transform:uppercase}
-.agenda .sub{margin:16px 0 0;color:var(--cinza-claro);max-width:32ch}
-.ag-lista{list-style:none;margin:0;padding:0}
-.ag-item{display:grid;grid-template-columns:76px minmax(0,1fr) auto;gap:16px;align-items:center;padding:16px 0;border-top:1px solid var(--grafite)}
-.ag-item:last-child{border-bottom:1px solid var(--grafite)}
-.ag-data{font-family:var(--display);font-stretch:62%;font-weight:800;font-size:40px;line-height:.9;text-transform:uppercase;font-variant-numeric:tabular-nums}
-.ag-data small{display:block;font-family:var(--texto);font-stretch:100%;font-size:12px;font-weight:600;letter-spacing:.08em;color:var(--cinza-claro);margin-top:4px}
-.ag-nome{font-weight:600;min-width:0}
-.ag-nome a{text-decoration:underline;text-decoration-color:var(--grafite);text-underline-offset:4px}
-.ag-nome a:hover{text-decoration-color:var(--branco)}
-.ag-meta{display:block;font-weight:400;font-size:14px;color:var(--cinza-claro)}
-.ag-tag{font-size:12px;font-weight:600;padding:4px 12px;border-radius:var(--pilula);background:var(--branco);color:var(--tinta);white-space:nowrap}
-.ag-item:first-child .ag-tag{background:var(--azul);color:var(--tinta)}
-.ag-vazio{padding:16px 0;border-top:1px solid var(--grafite);color:var(--cinza-claro)}
-.agenda .esqueleto{background:#1E1F21;animation:none;height:72px;margin-bottom:8px}
+/* Agenda */
+.agenda{margin-top:64px;background:var(--asfalto);color:var(--neblina)}
+.agenda .wrap{padding-top:48px;padding-bottom:48px}
+.agenda .cab-secao span{color:var(--concreto);font-size:15px}
+.ag-grade{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:16px}
+.ag-card{background:var(--asfalto-2);border-radius:12px;padding:18px;display:flex;flex-direction:column;gap:8px;border-top:4px solid var(--azul)}
+.ag-data{font-weight:900;font-stretch:125%;font-size:28px;line-height:1;color:var(--azul)}
+.ag-nome{font-weight:800;font-size:16px;line-height:1.3}
+.ag-nome a{color:var(--neblina);text-decoration:underline;text-decoration-color:var(--azul);text-underline-offset:3px}
+.ag-nome a:hover{color:var(--azul)}
+.ag-meta{font-size:14px;color:var(--concreto)}
+.ag-vazio{grid-column:1/-1;color:var(--concreto)}
+.agenda .esqueleto{background:var(--asfalto-2);animation:none;height:130px}
+.agenda .mais .btn{background:transparent;color:var(--neblina);box-shadow:inset 0 0 0 1.5px var(--neblina)}
+.agenda .mais .btn:hover{background:var(--neblina);color:var(--asfalto)}
 
-/* Como achar */
-.passos{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px}
-.passo{background:var(--nuvem);padding:28px 24px 32px;display:flex;flex-direction:column;gap:10px}
-.passo-n{font-family:var(--display);font-stretch:62%;font-weight:900;font-size:64px;line-height:.85}
-.passo b{font-size:18px;font-weight:600}
-.passo span{color:var(--grafite)}
+/* Melhores momentos */
+.mosaico{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));grid-auto-rows:180px;gap:10px}
+.mosaico a{position:relative;display:block;border-radius:10px;overflow:hidden;background:var(--asfalto)}
+.mosaico a:first-child{grid-column:span 2;grid-row:span 2}
+.mosaico img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;transition:transform .3s ease}
+.mosaico a:hover img{transform:scale(1.04)}
+
+/* Organizadores */
+.organiza{margin-top:56px;margin-bottom:56px;background:var(--azul);border-radius:16px;padding:40px;display:flex;justify-content:space-between;align-items:center;gap:24px;flex-wrap:wrap;color:var(--asfalto)}
+.organiza-texto{max-width:640px;display:flex;flex-direction:column;gap:8px}
+.organiza-texto b{font-weight:900;font-stretch:125%;font-size:clamp(26px,3.4vw,34px);line-height:1}
+.organiza-texto span{font-size:18px}
 
 /* Rodapé */
-.rodape{border-top:1px solid var(--fio)}
-.rodape .miolo{display:flex;justify-content:space-between;align-items:center;gap:20px;flex-wrap:wrap;padding-block:32px 40px;font-size:14px;color:var(--cinza)}
-.rodape .marca{font-size:24px;color:var(--tinta)}
-.rodape-links{display:flex;gap:10px;flex-wrap:wrap}
+.rodape{background:var(--asfalto);color:var(--concreto);font-size:14px}
+.rodape .wrap{display:flex;justify-content:space-between;align-items:center;gap:16px;flex-wrap:wrap;padding-top:32px;padding-bottom:max(32px,env(safe-area-inset-bottom,0px))}
+.rodape-marca{color:var(--neblina);font-weight:900;font-stretch:125%}
+.assinatura{font-size:12px;color:#8A9096}
+.rodape-links{display:flex;gap:18px;flex-wrap:wrap}
+.rodape-links a{color:var(--neblina)}
 
-@media (max-width:900px){
-  .grade{grid-template-columns:repeat(2,minmax(0,1fr));gap:32px 8px}
-  .agenda .miolo{grid-template-columns:1fr;padding-block:56px}
-  .passos{grid-template-columns:1fr}
+/* Botão flutuante do WhatsApp */
+.zap{position:fixed;right:max(20px,calc(env(safe-area-inset-right,0px) + 16px));bottom:max(20px,calc(env(safe-area-inset-bottom,0px) + 16px));z-index:30;width:60px;height:60px;border-radius:50%;background:var(--whatsapp);display:flex;align-items:center;justify-content:center;box-shadow:0 6px 18px rgba(0,0,0,.25)}
+.zap:hover{filter:brightness(1.05)}
+
+@media (max-width:980px){
+  .ag-grade{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .mosaico{grid-template-columns:repeat(2,minmax(0,1fr));grid-auto-rows:150px}
 }
-@media (max-width:640px){
-  .busca{flex:1 1 100%;margin-left:0;order:3}
-  .capa-foto{height:520px}
-  .capa-texto{padding-block:0 28px}
-  .ag-item{grid-template-columns:60px minmax(0,1fr)}
-  .ag-tag{display:none}
-  .ag-data{font-size:34px}
-  .album-nome{font-size:15px}
+@media (max-width:720px){
+  .menu{order:3;width:100%;margin-left:0;gap:2px 18px;font-size:14px}
+  .capa{min-height:520px}
+  .capa .wrap{padding-bottom:32px}
+  .destaque-info{padding:28px 24px}
+  .destaque-foto{min-height:240px}
+  .organiza{padding:28px 24px}
+}
+@media (max-width:460px){
+  .ag-grade{grid-template-columns:1fr}
 }
 @media (prefers-reduced-motion:reduce){
   html{scroll-behavior:auto}
   .esqueleto{animation:none}
-  .album-foto img,.album:hover .album-foto img{transition:none;transform:none}
+  .card,.card:hover{transition:none;transform:none}
+  .mosaico img,.mosaico a:hover img{transition:none;transform:none}
 }
 </style>
 </head>
 <body>
 
-<div class="util faixa">
-  <div class="miolo">
-    <span>Fotos de corridas, treinos, motos e carros na Serra Gaúcha</span>
-    <span><a href="https://www.instagram.com/rastroimagens/" target="_blank" rel="noopener">Instagram</a> &nbsp;·&nbsp; <a href="https://wa.me/5554991545485" target="_blank" rel="noopener">WhatsApp</a></span>
-  </div>
-</div>
-
-<header class="topo faixa">
-  <div class="miolo">
-    <a class="marca" href="#inicio" aria-label="Rastro Imagens, início">Rastro <span>Imagens</span></a>
+<header class="topo">
+  <div class="wrap">
+    <a class="marca" href="#inicio" aria-label="Rastro Imagens, início">
+      <svg width="42" height="32" viewBox="0 0 160 120" aria-hidden="true">
+        <text x="4" y="104" fill="#2F8CFF" opacity=".22" font-family="Archivo, sans-serif" font-weight="900" font-size="120" style="font-stretch:125%">R</text>
+        <text x="26" y="104" fill="#2F8CFF" opacity=".5" font-family="Archivo, sans-serif" font-weight="900" font-size="120" style="font-stretch:125%">R</text>
+        <text x="50" y="104" fill="#2F8CFF" font-family="Archivo, sans-serif" font-weight="900" font-size="120" style="font-stretch:125%">R</text>
+      </svg>
+      <span class="marca-nome">RASTRO <span>IMAGENS</span></span>
+    </a>
     <nav class="menu" aria-label="Principal">
       <a href="#albuns">Álbuns</a>
       <a href="#agenda">Agenda</a>
-      <a href="#como-funciona">Como achar sua foto</a>
+      <a href="#organizadores">Para organizadores</a>
       <!-- <a href="#videos">Vídeos</a> -->
+      <a class="ig" href="https://www.instagram.com/rastroimagens/" target="_blank" rel="noopener" aria-label="Instagram @rastroimagens">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1"/></svg>
+      </a>
     </nav>
-    <form class="busca" role="search" onsubmit="event.preventDefault();document.getElementById('albuns').scrollIntoView();">
-      <label for="busca">
-        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="m20 20-4-4"/></svg>
-        <span class="sr-only">Buscar evento</span>
-        <input id="busca" type="search" placeholder="Qual evento você participou?" autocomplete="off">
-      </label>
-    </form>
   </div>
 </header>
 
 <main id="inicio">
 
-  <section class="capa" id="ultimo" aria-labelledby="titulo-capa">
+  <section class="capa" aria-labelledby="titulo-capa">
     <div class="capa-foto" id="capa-foto"></div>
-    <div class="capa-texto faixa">
-      <div class="miolo">
-        <h1 id="titulo-capa">Seu movimento deixou um rastro.</h1>
-        <p class="info" id="capa-info">Encontre suas fotos de corridas, treinos, motos e carros na Serra Gaúcha.</p>
-        <div class="acoes" id="capa-acoes">
-          <a class="btn btn-branco" href="#albuns">Ver álbuns</a>
-          <a class="btn btn-contorno" href="#agenda">Próximos eventos</a>
-        </div>
+    <div class="wrap">
+      <h1 id="titulo-capa">SEU MOVIMENTO DEIXOU UM RASTRO.</h1>
+      <form class="busca" role="search" onsubmit="event.preventDefault();document.getElementById('albuns').scrollIntoView();">
+        <label class="sr-only" for="busca">Buscar evento</label>
+        <input id="busca" type="search" placeholder="Qual evento você participou?" autocomplete="off">
+        <button class="btn btn-azul" type="submit">Achar minha foto</button>
+      </form>
+      <div class="filtros" id="filtros" role="group" aria-label="Filtrar por tipo"></div>
+    </div>
+  </section>
+
+  <section class="wrap secao" id="ultimo" aria-labelledby="titulo-ultimo">
+    <h2 class="rotulo" id="titulo-ultimo" style="margin:0">ÚLTIMO EVENTO</h2>
+    <div id="destaque"><div class="esqueleto" style="height:360px;margin-top:14px"></div></div>
+  </section>
+
+  <section class="wrap secao" id="albuns" aria-labelledby="titulo-albuns">
+    <div class="cab-secao"><h2 class="titulo" id="titulo-albuns">ÁLBUNS</h2></div>
+    <div class="grade" id="grade" aria-live="polite">
+      <div class="esqueleto" style="height:300px"></div><div class="esqueleto" style="height:300px"></div><div class="esqueleto" style="height:300px"></div>
+    </div>
+    <div class="mais" id="mais" hidden>
+      <button class="btn btn-escuro" type="button" id="btn-mais">Ver eventos anteriores</button>
+    </div>
+  </section>
+
+  <section class="agenda" id="agenda" aria-labelledby="titulo-agenda">
+    <div class="wrap">
+      <div class="cab-secao">
+        <h2 class="titulo" id="titulo-agenda">ONDE VOU ESTAR</h2>
+        <span>Próximos eventos com a Rastro no percurso</span>
+      </div>
+      <div class="ag-grade" id="lista-agenda" aria-live="polite">
+        <div class="esqueleto"></div><div class="esqueleto"></div><div class="esqueleto"></div><div class="esqueleto"></div>
+      </div>
+      <div class="mais" id="ag-mais" hidden>
+        <button class="btn" type="button" id="btn-ag-mais">Ver mais datas</button>
       </div>
     </div>
   </section>
 
-  <section class="secao faixa" id="albuns" aria-labelledby="titulo-albuns">
-    <div class="miolo">
-      <div class="cab">
-        <h2 id="titulo-albuns">Álbuns</h2>
-        <div class="chips" id="filtros" role="group" aria-label="Filtrar por tipo"></div>
-      </div>
-      <div class="grade" id="grade" aria-live="polite">
-        <div class="esqueleto" style="aspect-ratio:4/3"></div><div class="esqueleto" style="aspect-ratio:4/3"></div><div class="esqueleto" style="aspect-ratio:4/3"></div>
-      </div>
-      <div class="mais" id="mais" hidden>
-        <button class="btn btn-preto" type="button" id="btn-mais">Ver eventos anteriores</button>
-      </div>
+  <section class="wrap secao" id="momentos" aria-labelledby="titulo-momentos" hidden>
+    <div class="cab-secao">
+      <h2 class="titulo" id="titulo-momentos">MELHORES MOMENTOS</h2>
+      <a href="https://www.instagram.com/rastroimagens/" target="_blank" rel="noopener">Seguir @rastroimagens</a>
     </div>
+    <div class="mosaico" id="mosaico"></div>
   </section>
 
-  <section class="agenda faixa" id="agenda" aria-labelledby="titulo-agenda">
-    <div class="miolo">
-      <div>
-        <h2 id="titulo-agenda">Onde vou estar</h2>
-        <p class="sub">Próximos eventos com a Rastro no percurso.</p>
+  <section class="wrap" id="organizadores" aria-labelledby="titulo-organiza">
+    <div class="organiza">
+      <div class="organiza-texto">
+        <b id="titulo-organiza">ORGANIZA UM EVENTO?</b>
+        <span>Leve a Rastro Imagens para a sua prova: fotos e vídeo dos atletas, com o álbum pronto para venda.</span>
       </div>
-      <ol class="ag-lista" id="lista-agenda" aria-live="polite">
-        <li class="esqueleto"></li><li class="esqueleto"></li>
-      </ol>
-    </div>
-  </section>
-
-  <section class="secao faixa" id="como-funciona" aria-labelledby="titulo-como">
-    <div class="miolo">
-      <div class="cab"><h2 id="titulo-como">Como achar sua foto</h2></div>
-      <div class="passos">
-        <div class="passo"><span class="passo-n">1</span><b>Ache o evento</b><span>Busque pelo nome ou escolha na lista de álbuns.</span></div>
-        <div class="passo"><span class="passo-n">2</span><b>Abra o álbum</b><span>Clique em Ver fotos para abrir o álbum completo.</span></div>
-        <div class="passo"><span class="passo-n">3</span><b>Compre a sua</b><span>Ache suas fotos e finalize a compra direto no álbum.</span></div>
-      </div>
+      <a class="btn btn-escuro" href="https://wa.me/5554991545485" target="_blank" rel="noopener">Falar no WhatsApp</a>
     </div>
   </section>
 
   <!-- SEÇÃO DE VÍDEOS: descomentar quando houver vídeo para postar (e o link "Vídeos" no menu)
-  <section class="secao faixa" id="videos" aria-labelledby="titulo-videos">
-    <div class="miolo">
-      <div class="cab"><h2 id="titulo-videos">Vídeos e drone</h2></div>
-      <p>Vídeos dos eventos e imagens aéreas de drone.</p>
-      <a class="btn btn-preto" href="https://www.instagram.com/rastroimagens/" target="_blank" rel="noopener">Ver no Instagram</a>
-      <div class="video-caixa">[VÍDEO EM DESTAQUE]</div>
-    </div>
+  <section class="wrap secao" id="videos" aria-labelledby="titulo-videos">
+    <div class="cab-secao"><h2 id="titulo-videos" class="titulo">VÍDEOS E DRONE</h2></div>
+    <p>Vídeos dos eventos e imagens aéreas de drone.</p>
+    <a class="btn btn-azul" href="https://www.instagram.com/rastroimagens/" target="_blank" rel="noopener">Ver no Instagram</a>
+    <div class="video-caixa">[VÍDEO EM DESTAQUE]</div>
   </section>
   FIM DA SEÇÃO DE VÍDEOS -->
 
 </main>
 
-<footer class="rodape faixa">
-  <div class="miolo">
-    <div><div class="marca">Rastro <span>Imagens</span></div>by Bruno Ghiggi</div>
+<footer class="rodape">
+  <div class="wrap">
+    <div>
+      <div class="rodape-marca">RASTRO IMAGENS</div>
+      <div class="assinatura">by Bruno Ghiggi</div>
+    </div>
     <div class="rodape-links">
-      <a class="btn btn-preto" href="https://www.instagram.com/rastroimagens/" target="_blank" rel="noopener">Instagram</a>
-      <a class="btn btn-preto" href="https://wa.me/5554991545485" target="_blank" rel="noopener">WhatsApp</a>
+      <a href="https://www.instagram.com/rastroimagens/" target="_blank" rel="noopener">Instagram</a>
+      <a href="https://wa.me/5554991545485" target="_blank" rel="noopener">WhatsApp</a>
     </div>
   </div>
 </footer>
+
+<a class="zap" href="https://wa.me/5554991545485" target="_blank" rel="noopener" aria-label="Falar no WhatsApp">
+  <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#FFFFFF" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 11.5a8.5 8.5 0 0 1-12.6 7.4L3 20.5l1.6-5.2A8.5 8.5 0 1 1 21 11.5z"/></svg>
+</a>
 
 <script>
 /* ============================================================
@@ -311,12 +334,14 @@ a{color:inherit}
    (aceita nome de arquivo, link direto ou link do Google Drive).
 
    CAPA: usa a foto do evento mais recente que tiver miniatura.
+   MELHORES MOMENTOS: as fotos dos 5 eventos mais recentes com miniatura.
    ============================================================ */
 const PLANILHA_ID = '13V3y2jFuOJ7a8gLuarPBlkxWpxyySS8ZFTTn6GiunuQ';
 const URL_CSV = 'https://docs.google.com/spreadsheets/d/' + PLANILHA_ID + '/gviz/tq?tqx=out:csv';
 const URL_MINIATURAS = 'miniaturas/lista.json';
 /* álbuns mostrados antes do botão "ver anteriores" (menos no celular, para a agenda aparecer antes) */
-const POR_PAGINA = window.matchMedia('(max-width: 720px)').matches ? 4 : 9;
+const POR_PAGINA = window.matchMedia('(max-width: 720px)').matches ? 4 : 6;
+const AGENDA_INICIAL = 4;  // datas mostradas antes do botão "ver mais datas"
 const DIAS_NOVO = 10;      // eventos mais recentes que isso ganham a etiqueta NOVO
 
 /* Usado só se a planilha não carregar */
@@ -354,6 +379,8 @@ let miniaturas = {};
 let filtroTipo = 'Todos';
 let termo = '';
 let limite = POR_PAGINA;
+let agendaLista = [];
+let agendaTudo = false;
 
 /* ---------- utilitários ---------- */
 function lerCSV(texto){
@@ -407,6 +434,7 @@ function urlImagem(v){
 }
 
 function imagemDe(e){
+  if (!e) return '';
   if (e.imagemPlanilha) return e.imagemPlanilha;
   const arq = miniaturas[chaveEvento(e)] || miniaturas[slug(e.nome)];
   return arq ? 'miniaturas/' + arq : '';
@@ -422,14 +450,14 @@ function el(tag, attrs, filhos){
   return n;
 }
 
-/* Grafismo do rastro, usado quando o evento ainda não tem foto */
-function rastroSVG(){
+/* Grafismo do rastro (identidade visual), usado quando o evento ainda não tem foto */
+function rastroSVG(cor){
   const ns = 'http://www.w3.org/2000/svg';
   const s = document.createElementNS(ns, 'svg');
   s.setAttribute('viewBox', '0 0 220 60'); s.setAttribute('aria-hidden', 'true');
-  [['0,26 220,20 220,40 0,34', .5], ['40,6 220,2 220,14 40,10', 1], ['40,50 220,46 220,58 40,54', 1]].forEach(([p, o]) => {
+  [['0,26 220,20 220,40 0,34', .35], ['40,6 220,2 220,14 40,10', .7], ['40,50 220,46 220,58 40,54', .7]].forEach(([p, o]) => {
     const pg = document.createElementNS(ns, 'polygon');
-    pg.setAttribute('points', p); pg.setAttribute('fill', '#FFFFFF'); pg.setAttribute('opacity', o);
+    pg.setAttribute('points', p); pg.setAttribute('fill', cor || '#2F8CFF'); pg.setAttribute('opacity', o);
     s.appendChild(pg);
   });
   return s;
@@ -437,7 +465,7 @@ function rastroSVG(){
 
 /* Coloca a foto (ou o grafismo, se não houver / falhar) dentro de um contêiner */
 function preencherFoto(caixa, e, preguicoso){
-  const src = e ? imagemDe(e) : '';
+  const src = imagemDe(e);
   if (!src){ caixa.appendChild(rastroSVG()); return; }
   const img = el('img', { src: src, alt: 'Foto do evento ' + e.nome, decoding: 'async' });
   if (preguicoso !== false) img.setAttribute('loading', 'lazy');
@@ -449,10 +477,6 @@ function ehNovo(e){
   if (!e.data) return false;
   const dias = (new Date() - e.data) / 86400000;
   return dias <= DIAS_NOVO && dias >= -1;
-}
-
-function dataExtenso(e){
-  return e.data ? String(e.data.getDate()).padStart(2, '0') + ' ' + MESES[e.data.getMonth()] + ' ' + e.data.getFullYear() : e.dataTxt;
 }
 
 function registrarClique(a, e){
@@ -502,9 +526,20 @@ async function carregarEventos(){
 
 async function carregar(){
   await Promise.all([carregarMiniaturas(), carregarEventos()]);
-  desenharFiltros();
   desenharCapa();
+  desenharFiltros();
+  desenharDestaque();
   desenhar();
+  desenharMomentos();
+}
+
+/* ---------- capa ---------- */
+function desenharCapa(){
+  const caixa = document.getElementById('capa-foto');
+  caixa.textContent = '';
+  const comFoto = todos.find(e => imagemDe(e));
+  if (comFoto) preencherFoto(caixa, comFoto, false);
+  else caixa.appendChild(rastroSVG());
 }
 
 /* ---------- filtros ---------- */
@@ -519,44 +554,44 @@ function desenharFiltros(){
   });
 }
 
-/* ---------- capa: último evento ---------- */
-function desenharCapa(){
-  const e = todos[0];
-  if (!e) return;
-  /* foto: a do último evento; se ainda não tiver, a do evento mais recente que tiver */
-  const comFoto = todos.find(x => imagemDe(x));
-  const caixa = document.getElementById('capa-foto');
+/* ---------- último evento ---------- */
+function desenharDestaque(){
+  const caixa = document.getElementById('destaque');
   caixa.textContent = '';
-  preencherFoto(caixa, comFoto, false);
-
-  const info = document.getElementById('capa-info');
-  info.textContent = '';
-  if (ehNovo(e)) info.appendChild(el('span', { class: 'novo', text: 'Novo' }));
-  info.appendChild(el('span', {}, ['Último evento: ', el('b', { text: e.nome }), ' · ' + dataExtenso(e)]));
-
-  const acoes = document.getElementById('capa-acoes');
-  acoes.textContent = '';
-  acoes.appendChild(registrarClique(el('a', {
-    class: 'btn btn-branco', href: e.link, target: '_blank', rel: 'noopener', 'aria-label': 'Ver fotos de ' + e.nome, text: 'Ver fotos'
-  }), e));
-  acoes.appendChild(el('a', { class: 'btn btn-contorno', href: '#agenda', text: 'Próximos eventos' }));
+  const e = todos[0];
+  if (!e){ document.getElementById('ultimo').hidden = true; return; }
+  const foto = el('div', { class: 'destaque-foto' });
+  preencherFoto(foto, e);
+  const dataTxt = e.data ? String(e.data.getDate()).padStart(2, '0') + ' ' + MESES[e.data.getMonth()] + ' ' + e.data.getFullYear() : e.dataTxt;
+  const info = el('div', { class: 'destaque-info' }, [
+    el('div', { class: 'destaque-chapeu' }, [
+      ehNovo(e) ? el('span', { class: 'tag tag-novo', text: 'NOVO' }) : null,
+      dataTxt + ' · ' + e.tipo.toUpperCase()
+    ]),
+    el('h2', { text: e.nome }),
+    el('p', { class: 'destaque-meta', text: 'Álbum completo do evento' }),
+    registrarClique(el('a', { class: 'btn btn-azul', href: e.link, target: '_blank', rel: 'noopener', 'aria-label': 'Ver fotos de ' + e.nome, text: 'Ver fotos' }), e)
+  ]);
+  caixa.appendChild(el('article', { class: 'destaque' }, [foto, info]));
 }
 
 /* ---------- grade de álbuns ---------- */
 function card(e){
-  const foto = el('div', { class: 'album-foto' });
+  const foto = el('div', { class: 'card-foto' });
   preencherFoto(foto, e);
-  const tipo = el('span', { class: 'album-tipo' }, [
-    ehNovo(e) ? el('span', { class: 'novo', text: 'Novo · ' }) : null,
-    e.tipo
+  const dataCurta = e.data ? String(e.data.getDate()).padStart(2, '0') + ' ' + MESES[e.data.getMonth()] : e.dataTxt;
+  /* etiquetas ficam fora da foto para não cobrir o atleta */
+  const etiquetas = el('div', { class: 'pill' }, [
+    el('span', { class: 'tag', text: dataCurta }),
+    ehNovo(e) ? el('span', { class: 'tag tag-novo', text: 'NOVO' }) : null,
+    el('span', { class: 'tag tag-tipo', text: e.tipo.toUpperCase() })
   ]);
-  const a = el('a', { class: 'album', href: e.link, target: '_blank', rel: 'noopener', 'aria-label': 'Ver fotos de ' + e.nome }, [
+  const a = el('a', { class: 'card', href: e.link, target: '_blank', rel: 'noopener', 'aria-label': 'Ver fotos de ' + e.nome }, [
     foto,
-    el('div', { class: 'album-texto' }, [
-      tipo,
-      el('span', { class: 'album-nome', text: e.nome }),
-      el('span', { class: 'album-data', text: dataExtenso(e) }),
-      el('span', { class: 'album-ver', text: 'Ver fotos' })
+    el('div', { class: 'card-corpo' }, [
+      etiquetas,
+      el('span', { class: 'card-nome', text: e.nome }),
+      el('span', { class: 'card-meta', text: 'Álbum completo' + (e.data ? ' · ' + e.data.getFullYear() : '') })
     ])
   ]);
   return registrarClique(a, e);
@@ -566,13 +601,14 @@ function desenhar(){
   const grade = document.getElementById('grade');
   const t = normalizar(termo);
   const buscando = !!t || filtroTipo !== 'Todos';
-  /* sem busca/filtro, o último evento já aparece na capa e sai da grade */
+  /* sem busca/filtro, o último evento já aparece em destaque e sai da grade */
   const base = buscando ? todos : todos.slice(1);
   const filtrados = base.filter(e =>
     (filtroTipo === 'Todos' || e.tipo === filtroTipo) &&
     (!t || normalizar(e.nome + ' ' + e.tipo).includes(t))
   );
-  document.getElementById('titulo-albuns').textContent = buscando ? 'Resultados' : 'Álbuns';
+  document.getElementById('ultimo').hidden = buscando || !todos.length;
+  document.getElementById('titulo-albuns').textContent = buscando ? 'RESULTADOS' : 'ÁLBUNS';
   grade.textContent = '';
   if (!filtrados.length){
     grade.appendChild(el('div', { class: 'vazio', text: buscando ? 'Nenhum evento encontrado. Tente outro nome.' : 'Novos álbuns em breve.' }));
@@ -580,6 +616,21 @@ function desenhar(){
     filtrados.slice(0, limite).forEach(e => grade.appendChild(card(e)));
   }
   document.getElementById('mais').hidden = filtrados.length <= limite;
+}
+
+/* ---------- melhores momentos ---------- */
+function desenharMomentos(){
+  const fotos = todos.filter(e => imagemDe(e)).slice(0, 5);
+  const secao = document.getElementById('momentos');
+  if (fotos.length < 3){ secao.hidden = true; return; }
+  const caixa = document.getElementById('mosaico');
+  caixa.textContent = '';
+  fotos.forEach(e => {
+    const a = el('a', { href: e.link, target: '_blank', rel: 'noopener', 'aria-label': 'Ver fotos de ' + e.nome });
+    preencherFoto(a, e);
+    caixa.appendChild(registrarClique(a, e));
+  });
+  secao.hidden = false;
 }
 
 /* ---------- agenda ---------- */
@@ -599,7 +650,6 @@ function montarAgenda(linhas){
 }
 
 async function carregarAgenda(){
-  let lista;
   try {
     const r = await fetch(URL_AGENDA, { cache: 'no-store' });
     if (!r.ok) throw new Error('HTTP ' + r.status);
@@ -608,22 +658,24 @@ async function carregarAgenda(){
     const cab = (linhas[0] || []).map(normalizar);
     if (cab[0] !== 'data' || cab[1] !== 'horario') throw new Error('aba Agenda não encontrada');
     linhas.shift();
-    lista = montarAgenda(linhas);
+    agendaLista = montarAgenda(linhas);
   } catch (e) {
     console.warn('Agenda indisponível, usando lista reserva:', e.message);
-    lista = montarAgenda(AGENDA_RESERVA);
+    agendaLista = montarAgenda(AGENDA_RESERVA);
   }
-  desenharAgenda(lista);
+  desenharAgenda();
 }
 
-function desenharAgenda(lista){
+function desenharAgenda(){
   const caixa = document.getElementById('lista-agenda');
   caixa.textContent = '';
-  if (!lista.length){
-    caixa.appendChild(el('li', { class: 'ag-vazio', text: 'Nenhum evento agendado no momento. Acompanhe no Instagram.' }));
+  if (!agendaLista.length){
+    caixa.appendChild(el('div', { class: 'ag-vazio', text: 'Nenhum evento agendado no momento. Acompanhe no Instagram.' }));
+    document.getElementById('ag-mais').hidden = true;
     return;
   }
-  lista.forEach((e, i) => {
+  const mostrar = agendaTudo ? agendaLista : agendaLista.slice(0, AGENDA_INICIAL);
+  mostrar.forEach(e => {
     const meta = [e.cidade, e.hora ? 'largada ' + e.hora : ''].filter(Boolean).join(' · ');
     let nome;
     if (/^https?:\/\//i.test(e.link)){
@@ -632,25 +684,25 @@ function desenharAgenda(lista){
     } else {
       nome = document.createTextNode(e.nome);
     }
-    caixa.appendChild(el('li', { class: 'ag-item' }, [
-      el('span', { class: 'ag-data' }, [
-        String(e.data.getDate()).padStart(2, '0'),
-        el('small', { text: MESES[e.data.getMonth()] })
-      ]),
-      el('span', { class: 'ag-nome' }, [nome, el('span', { class: 'ag-meta', text: meta })]),
-      el('span', { class: 'ag-tag', text: i === 0 ? 'Próximo' : (e.tipo || 'Evento') })
+    caixa.appendChild(el('div', { class: 'ag-card' }, [
+      el('span', { class: 'ag-data', text: String(e.data.getDate()).padStart(2, '0') + ' ' + MESES[e.data.getMonth()] }),
+      el('span', { class: 'ag-nome' }, [nome]),
+      el('span', { class: 'ag-meta', text: meta })
     ]));
   });
+  document.getElementById('ag-mais').hidden = agendaTudo || agendaLista.length <= AGENDA_INICIAL;
 }
 
 /* ---------- eventos da página ---------- */
 document.getElementById('busca').addEventListener('input', ev => { termo = ev.target.value; limite = POR_PAGINA; desenhar(); });
 document.getElementById('btn-mais').addEventListener('click', () => { limite += POR_PAGINA; desenhar(); });
+document.getElementById('btn-ag-mais').addEventListener('click', () => { agendaTudo = true; desenharAgenda(); });
 
 /* Cliques em WhatsApp e Instagram */
 document.querySelectorAll('a[href*="wa.me"], a[href*="instagram.com"]').forEach(a => {
   a.addEventListener('click', () => rastrear('contato', {
     canal: a.href.includes('wa.me') ? 'WhatsApp' : 'Instagram',
+    local: a.classList.contains('zap') ? 'botao_flutuante' : (a.closest('#organizadores') ? 'organizadores' : 'pagina'),
     link_url: a.href
   }));
 });

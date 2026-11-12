@@ -1,57 +1,50 @@
 ---
-title: "Rastro Imagens — Esportivo"
-base: "Análise de design da Nike na coleção VoltAgent/awesome-design-md (https://github.com/VoltAgent/awesome-design-md/tree/main/design-md/nike) — só o estilo, sem marca, logo ou fontes da Nike"
-description: "Site de fotos de eventos (corridas, treinos, motos, carros) onde a foto fala e a interface fica quieta: preto, branco, um cinza e o azul da marca."
+title: "Rastro Imagens — Site A · Vitrine"
+base: "Identidade visual da Rastro Imagens (canvas 'Rastro Imagens — Identidade Visual', cópia em identidade-visual/), prancha Site-A-Vitrine.dc.html"
+description: "Site de fotos de corridas, treinos, motos e carros na Serra Gaúcha. Foto em primeiro lugar, com as cores, a fonte e o logo da marca."
 ---
 
-# DESIGN.md — Rastro Imagens (esportivo)
+# DESIGN.md — Rastro Imagens (Vitrine)
+
+A fonte da verdade é a identidade visual em `identidade-visual/`
+(Conceito, Logos, Sistema, Textos). Este arquivo resume o que o site usa.
 
 ## Essência
-A foto é o protagonista; a interface é neutra. Capa com foto grande e título
-condensado gigante em maiúsculas; o resto (menu, filtros, botões, cartões) é
-preto, branco e cinza claro, com botões em forma de pílula.
-O objetivo é prático: achar o evento e clicar em **Ver fotos**.
+"Tudo que se move deixa um rastro." A foto é a vitrine; quem chega quer achar
+a própria foto, então a busca fica na capa. Slogan: **Deixe seu rastro.**
 
-## Paleta (variáveis CSS)
-- `--tinta`: `#111111` — texto, botão principal, faixa da agenda, filtro ativo
-- `--branco`: `#FFFFFF` — fundo da página, texto sobre preto
-- `--nuvem`: `#F4F5F6` — barra de utilidade, campo de busca, blocos "como achar"
-- `--grafite`: `#3A3B3D` — hover do botão preto, fios na faixa preta
-- `--cinza`: `#707274` — tipo e data dos álbuns, rodapé
-- `--cinza-claro`: `#B5B6B8` — texto secundário sobre preto
-- `--fio`: `#D6D7D9` — contorno dos filtros e linha do rodapé
-- `--azul`: `#2F8CFF` — o único acento: "Novo", "Próximo" e foco do teclado
+## Cores (variáveis CSS)
+- `--asfalto` `#16191C` — base da marca: cabeçalho, faixa da agenda, rodapé, último evento
+- `--azul` `#2F8CFF` — Azul Elétrico: botões, logo, datas da agenda, chamada para organizadores
+- `--neblina` `#F7F5F0` — fundo do site e texto sobre o Asfalto
+- `--concreto` `#A3A9AE` — texto de apoio sobre fundo escuro (datas, cidades)
+- `--asfalto-2` `#22272B` — cartões da agenda
+- Apoio: `--azul-escuro` `#0B4FB3` (links sobre claro), `--texto-2` `#4F565C`, `--linha` `#E2DED5`
+- Nunca usar o Azul Elétrico em texto pequeno sobre fundo claro.
 
-Nada de laranja, degradê decorativo ou sombra. Cor só nas fotos.
+## Tipografia
+- **Archivo** (Google Fonts), uma família só.
+- Títulos: Archivo Expanded Black (`font-weight:900; font-stretch:125%`), sempre em CAIXA ALTA, frases curtas.
+- Textos: Archivo Regular/Medium.
+- Rótulos: 13px, 800, `letter-spacing:3px`, em caixa alta.
 
-## Tipografia (Google Fonts)
-- **Display**: Archivo condensado (`font-stretch:62%`), peso 900, MAIÚSCULAS.
-  Capa 56–148px / 0.86; "Onde vou estar" 56–112px; números dos passos 64px.
-- **Títulos de seção**: Archivo 600, 28px.
-- **Interface e texto**: Inter 400/500/600, 12–18px.
+## Logo
+- Opção B "R em movimento" (três R com opacidade 22% / 50% / 100% em Azul Elétrico) + "RASTRO" Black Expanded + "IMAGENS" espaçado em azul.
+- Assinatura "by Bruno Ghiggi" pequena, em cinza, abaixo do nome (rodapé).
+- Grafismo do rastro (três linhas que afinam) quando falta foto.
 
-## Espaço e grid
-- Largura máxima 1440px; margem lateral mínima de 16px.
-- Seções com 48px de respiro; faixa preta com 56–72px.
-- Álbuns em grade de 3 colunas (2 até 900px), espaço de 12px entre colunas e 40px entre linhas.
+## Estrutura da página (Site A · Vitrine)
+1. **Cabeçalho** Asfalto fixo: logo, Álbuns, Agenda, Para organizadores, Instagram.
+2. **Capa**: foto grande do evento mais recente com miniatura, degradê escuro embaixo, "SEU MOVIMENTO DEIXOU UM RASTRO.", busca + "Achar minha foto" (azul) e filtros em pílula com contorno.
+3. **Último evento**: cartão Asfalto com foto à esquerda; data · tipo em azul, nome em Black Expanded, botão "Ver fotos".
+4. **Álbuns**: grade de cartões brancos (raio 12px, borda `--linha`), foto 3:2; etiquetas (data, NOVO, tipo) **abaixo da foto, nunca sobre o atleta**.
+5. **Onde vou estar**: faixa Asfalto, cartões com borda superior azul de 4px e data grande em azul (4 primeiras datas + "Ver mais datas").
+6. **Melhores momentos**: mosaico com as fotos dos 5 eventos mais recentes (uma grande 2×2 + quatro pequenas) e "Seguir @rastroimagens".
+7. **Organiza um evento?**: bloco azul com botão escuro "Falar no WhatsApp".
+8. **Rodapé** Asfalto + botão flutuante do WhatsApp.
 
-## Componentes
-- **Barra de utilidade** (cinza, 36px): frase do site + Instagram e WhatsApp.
-- **Menu** (60px, fixo no topo): marca "RASTRO IMAGENS" condensada, links, busca em pílula cinza à direita (no celular vai para a linha de baixo).
-- **Capa**: foto do evento mais recente que tiver miniatura, com degradê escuro embaixo; título "SEU MOVIMENTO DEIXOU UM RASTRO.", linha "Último evento: … · data" e botões pílula "Ver fotos" (branco) e "Próximos eventos" (contorno).
-- **Filtros**: pílulas com contorno; a ativa fica preta.
-- **Álbum**: a foto é o cartão (sem borda, sem raio, sem sombra, 4:3). Abaixo: tipo (com "Novo ·" em azul), nome em negrito, data, "Ver fotos" sublinhado. Hover amplia a foto 4%.
-- **Sem foto**: bloco preto com o grafismo do rastro em branco.
-- **Agenda**: faixa preta; título gigante à esquerda, lista à direita com dia grande, nome, cidade/largada e etiqueta pílula ("Próximo" em azul).
-- **Como achar sua foto**: 3 blocos cinza numerados (é uma sequência real).
-- **Rodapé**: marca, "by Bruno Ghiggi", botões pretos Instagram e WhatsApp.
-
-## Movimento
-- Só o zoom leve da foto no hover e a troca de cor dos botões (150ms).
-- Respeitar `prefers-reduced-motion`.
-
-## Evitar
-- Texto sobre a foto fora da capa (etiquetas não cobrem o atleta).
-- Mais de uma cor de acento; cantos arredondados em cartões de foto.
-- Carrossel automático, vídeo na capa, emoji.
-- Logo, nome ou fontes da Nike — o modelo é só referência de estilo.
+## Regras
+- Não citar as plataformas de venda (Foco Radical, Fotto) no site.
+- Sem frase de "camiseta azul" na agenda.
+- Botões com raio 8px; filtros em pílula.
+- Respeitar `prefers-reduced-motion`; animação só no hover dos cartões e do mosaico.
