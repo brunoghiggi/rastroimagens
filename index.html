@@ -5,12 +5,12 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Rastro Imagens · Fotos e vídeos de corridas, motos e carros</title>
 <meta name="description" content="Encontre suas fotos e vídeos de corridas, passeios de moto e carros na Serra Gaúcha. Escolha o evento e veja o álbum completo.">
-<meta name="theme-color" content="#16191C">
+<meta name="theme-color" content="#F1ECE2">
 <meta property="og:title" content="Rastro Imagens">
 <meta property="og:description" content="Seu movimento deixou um rastro. Ache suas fotos e vídeos.">
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://rastroimagens.com.br/">
-<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='12' fill='%2316191C'/%3E%3Ctext x='18' y='48' font-family='Arial Black,Arial,sans-serif' font-weight='900' font-size='44' fill='%232F8CFF' opacity='.45'%3ER%3C/text%3E%3Ctext x='26' y='48' font-family='Arial Black,Arial,sans-serif' font-weight='900' font-size='44' fill='%232F8CFF'%3ER%3C/text%3E%3C/svg%3E">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='10' fill='%23F1ECE2'/%3E%3Ctext x='32' y='49' text-anchor='middle' font-family='Georgia,serif' font-weight='700' font-size='46' fill='%23161513'%3ER%3C/text%3E%3Crect x='14' y='54' width='36' height='3' fill='%231F3A8A'/%3E%3C/svg%3E">
 <script>
 /* ============================================================
    GOOGLE ANALYTICS (GA4)
@@ -35,158 +35,169 @@ function rastrear(nome, dados){
 </script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,400..900&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400;1,700&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,600;1,8..60,400&family=Inter:wght@500;600&display=swap">
 <style>
+/* Layout editorial — ver DESIGN.md */
 :root{
-  --asfalto:#16191C;
-  --asfalto-2:#22272B;
-  --azul:#2F8CFF;
-  --azul-claro:#DCEBFF;
-  --azul-escuro:#0B4FB3;
-  --laranja:#FF5A1F;
-  --neblina:#F7F5F0;
-  --papel:#FFFFFF;
-  --concreto:#A3A9AE;
-  --texto-2:#4F565C;
-  --linha:#E2DED5;
-  --raio:14px;
-  --max:1200px;
+  --papel:#F1ECE2;
+  --papel-frio:#E8E5DE;
+  --tinta:#161513;
+  --tinta-media:#5C5752;
+  --fio:#221F1B;
+  --acento:#1F3A8A;
+  --acento-suave:#D8DEEE;
+  --display:'Playfair Display',Georgia,'Times New Roman',serif;
+  --serifa:'Source Serif 4',Georgia,serif;
+  --sans:'Inter',system-ui,sans-serif;
+  --curva:cubic-bezier(0.4,0,0.2,1);
+  --max:1240px;
 }
 *{box-sizing:border-box}
 html{scroll-behavior:smooth}
-section[id]{scroll-margin-top:84px}
-body{margin:0;background:var(--neblina);color:var(--asfalto);font-family:'Archivo',system-ui,sans-serif;font-size:17px;line-height:1.5;-webkit-font-smoothing:antialiased}
+section[id]{scroll-margin-top:72px}
+body{margin:0;background:var(--papel);color:var(--tinta);font-family:var(--serifa);font-size:19px;line-height:1.68;-webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility}
 img{max-width:100%;display:block}
-a{color:var(--azul-escuro)}
-a:hover{color:#083A84}
-:focus-visible{outline:3px solid var(--laranja);outline-offset:3px}
-.wrap{max-width:var(--max);margin:0 auto;padding:0 20px}
+a{color:var(--tinta);text-decoration-color:var(--acento);text-underline-offset:4px;text-decoration-thickness:1px;transition:color .2s var(--curva)}
+a:hover{color:var(--acento)}
+:focus-visible{outline:2px solid var(--acento);outline-offset:4px}
+.wrap{max-width:var(--max);margin:0 auto;padding:0 24px}
 .sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}
-.titulo{margin:0;font-weight:900;font-stretch:125%;font-size:clamp(24px,3.4vw,32px);line-height:1}
-.rotulo{font-weight:800;font-size:13px;letter-spacing:3px}
 
-/* Botões */
-.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;min-height:48px;padding:0 20px;border-radius:10px;border:0;font:inherit;font-weight:800;font-size:15px;text-decoration:none;cursor:pointer}
-.btn-azul{background:var(--azul);color:var(--asfalto)}
-.btn-azul:hover{background:#5AA4FF;color:var(--asfalto)}
-.btn-escuro{background:var(--asfalto);color:var(--neblina)}
-.btn-escuro:hover{background:#2C3236;color:var(--neblina)}
-.btn-laranja{background:var(--laranja);color:var(--asfalto)}
-.btn-laranja:hover{background:#FF7A4A;color:var(--asfalto)}
+/* Utilitários tipográficos */
+.chapeu{font-family:var(--sans);font-weight:600;font-size:12px;line-height:18px;letter-spacing:.08em;text-transform:uppercase;color:var(--tinta-media)}
+.chapeu .novo{color:var(--acento)}
+.legenda{font-family:var(--sans);font-weight:500;font-size:12px;line-height:18px;letter-spacing:.08em;text-transform:uppercase;color:var(--tinta-media);margin-top:12px}
+.h-secao{margin:0;font-family:var(--display);font-weight:400;font-style:italic;font-size:clamp(32px,4vw,44px);line-height:1.14;letter-spacing:-.01em}
+.cab-secao{display:flex;align-items:baseline;justify-content:space-between;gap:16px;flex-wrap:wrap;border-top:2px solid var(--fio);padding-top:16px;margin-bottom:8px}
 
-/* Cabeçalho */
-.topo{background:var(--asfalto);color:var(--neblina);position:sticky;top:0;z-index:20}
-.topo .wrap{display:flex;align-items:center;gap:20px;min-height:68px;flex-wrap:wrap}
-.marca{display:flex;align-items:center;gap:10px;text-decoration:none;color:var(--neblina)}
-.marca:hover{color:var(--neblina)}
-.marca-nome{display:flex;flex-direction:column;line-height:1}
-.marca-nome b{font-weight:900;font-stretch:125%;font-size:22px;letter-spacing:-.5px}
-.marca-nome span{font-weight:700;font-stretch:125%;font-size:10px;letter-spacing:6px;color:var(--azul);margin-top:3px}
-.menu{display:flex;gap:4px;margin-left:auto;flex-wrap:wrap;align-items:center}
-.menu a{color:var(--neblina);text-decoration:none;font-size:15px;padding:12px 10px;border-radius:8px}
-.menu a:hover{color:var(--azul)}
-.menu .ig{display:inline-flex;align-items:center;justify-content:center;width:44px;height:44px;padding:0}
+/* Ação principal: "Ver fotos →" em serifa itálica */
+.ver{display:inline-flex;align-items:center;gap:10px;min-height:44px;font-family:var(--display);font-style:italic;font-size:22px;line-height:1.2;color:var(--acento);text-decoration:underline;text-decoration-thickness:1px;text-underline-offset:6px}
+.ver .seta{display:inline-block;font-style:normal;transition:transform .2s var(--curva)}
+.ver:hover{color:var(--tinta)}
+.ver:hover .seta{transform:translateX(6px)}
+.link-texto{display:inline-flex;align-items:center;min-height:44px;background:none;border:0;padding:0;font-family:var(--sans);font-weight:600;font-size:13px;letter-spacing:.08em;text-transform:uppercase;color:var(--tinta);text-decoration:underline;text-decoration-color:var(--acento);text-underline-offset:6px;cursor:pointer}
+.link-texto:hover{color:var(--acento)}
 
-/* Hero azul */
-.hero{position:relative;overflow:hidden;background:var(--azul);color:var(--asfalto);padding:56px 0 64px}
-.hero-rastro{position:absolute;right:-40px;top:28px;width:520px;max-width:60%;pointer-events:none}
-.hero h1{position:relative;margin:0;max-width:720px;font-weight:900;font-stretch:125%;font-size:clamp(36px,6.4vw,68px);line-height:.95;letter-spacing:-1px}
-.hero p{position:relative;margin:16px 0 0;max-width:560px;font-size:19px;font-weight:500}
-.busca{position:relative;margin-top:28px;max-width:680px}
-.busca-linha{display:flex;gap:8px;flex-wrap:wrap}
-.busca input{flex:1 1 260px;min-height:58px;border:0;border-radius:12px;padding:0 18px;font:inherit;font-size:17px;background:var(--papel);color:var(--asfalto);box-shadow:0 2px 0 rgba(22,25,28,.15)}
-.busca input::placeholder{color:#6B7277}
-.busca .btn{min-height:58px;padding:0 26px;font-size:16px}
-.filtros{position:relative;display:flex;gap:8px;flex-wrap:wrap;margin-top:16px}
-.chip{min-height:44px;padding:0 18px;border-radius:999px;border:2px solid var(--asfalto);background:transparent;color:var(--asfalto);font:inherit;font-weight:800;font-size:14px;cursor:pointer}
-.chip:hover{background:rgba(22,25,28,.08)}
-.chip[aria-pressed="true"]{background:var(--asfalto);color:var(--neblina)}
+/* Menu */
+.topo{position:sticky;top:0;z-index:20;background:var(--papel);border-bottom:1px solid var(--fio)}
+.topo .wrap{display:flex;align-items:center;gap:8px 24px;min-height:56px;flex-wrap:wrap}
+.marca{font-family:var(--display);font-weight:700;font-size:24px;line-height:1;letter-spacing:-.01em;text-decoration:none;color:var(--tinta)}
+.marca em{font-weight:400}
+.menu{display:flex;gap:4px 20px;margin-left:auto;flex-wrap:wrap}
+.menu a{font-family:var(--sans);font-weight:600;font-size:12px;letter-spacing:.08em;text-transform:uppercase;text-decoration:none;padding:12px 0}
+.menu a:hover{text-decoration:underline;text-decoration-color:var(--acento)}
 
-/* Corpo: conteúdo + agenda à direita */
-.corpo{display:flex;flex-wrap:wrap;gap:32px;align-items:flex-start;padding:48px 0 64px}
-.principal{flex:999 1 600px;min-width:0;display:flex;flex-direction:column;gap:40px}
-.lateral{flex:1 1 320px;display:flex;flex-direction:column;gap:20px}
-@media (min-width:980px){ .lateral{position:sticky;top:92px} }
+/* Capa */
+.capa{padding:72px 0 56px}
+.capa h1{margin:16px 0 0;max-width:11ch;font-family:var(--display);font-weight:700;font-size:clamp(48px,8.4vw,96px);line-height:.98;letter-spacing:-.03em}
+.capa .linha-fina{margin:24px 0 0;max-width:640px;font-family:var(--display);font-style:italic;font-weight:400;font-size:clamp(22px,2.4vw,28px);line-height:1.3;color:var(--tinta-media)}
+.busca{margin-top:40px;max-width:640px}
+.busca-linha{display:flex;align-items:flex-end;gap:16px 24px;flex-wrap:wrap;border-bottom:1px solid var(--fio)}
+.busca input{flex:1 1 260px;min-height:56px;border:0;background:transparent;padding:0;font-family:var(--display);font-style:italic;font-size:26px;color:var(--tinta);outline:none}
+.busca input::placeholder{color:#8C867E}
+.busca input:focus-visible{outline:none}
+.busca-linha:focus-within{border-bottom-color:var(--acento);box-shadow:0 1px 0 var(--acento)}
+.busca .link-texto{margin-bottom:6px}
+.filtros{display:flex;gap:0 24px;flex-wrap:wrap;margin-top:16px}
+.chip{min-height:44px;padding:0;background:none;border:0;font-family:var(--sans);font-weight:600;font-size:12px;letter-spacing:.08em;text-transform:uppercase;color:var(--tinta-media);cursor:pointer;text-underline-offset:6px}
+.chip:hover{color:var(--tinta)}
+.chip[aria-pressed="true"]{color:var(--tinta);text-decoration:underline;text-decoration-color:var(--acento);text-decoration-thickness:2px}
+
+/* Seções */
+.secao{padding:0 0 112px}
 
 /* Último evento */
-.destaque{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));background:var(--asfalto);color:var(--neblina);border-radius:var(--raio);overflow:hidden}
-.destaque-foto{position:relative;min-height:300px;background:var(--asfalto-2);overflow:hidden}
+.destaque{margin-top:24px}
+.destaque-foto{position:relative;aspect-ratio:16/9;background:var(--tinta);overflow:hidden}
 .destaque-foto img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
-.destaque-foto svg{position:absolute;left:-30px;top:50%;transform:translateY(-50%);width:120%;opacity:.5}
-.destaque-info{padding:32px;display:flex;flex-direction:column;justify-content:center;gap:12px}
-.destaque-info h3{margin:0;font-weight:900;font-stretch:125%;font-size:clamp(28px,3.6vw,40px);line-height:.95;text-transform:uppercase}
-.destaque-meta{color:var(--concreto);font-size:16px}
-.destaque-info .btn{align-self:flex-start;margin-top:6px}
+.destaque-texto{display:grid;gap:8px 48px;margin-top:32px}
+.destaque-texto h3{margin:8px 0 0;font-family:var(--display);font-weight:700;font-size:clamp(36px,5.2vw,64px);line-height:1;letter-spacing:-.02em}
+.destaque-texto .linha-fina{margin:0;font-family:var(--display);font-style:italic;font-size:clamp(20px,2vw,24px);line-height:1.35;color:var(--tinta-media)}
+@media (min-width:1024px){
+  .destaque-texto{grid-template-columns:repeat(12,1fr);align-items:end}
+  .destaque-texto .titulo-bloco{grid-column:1 / 9}
+  .destaque-texto .acao-bloco{grid-column:9 / 13}
+}
 
-/* Grade de álbuns */
-.cab-secao{display:flex;align-items:flex-end;justify-content:space-between;gap:12px;flex-wrap:wrap;margin-bottom:18px}
-.grade{display:grid;grid-template-columns:repeat(auto-fill,minmax(250px,1fr));gap:18px}
-.card{background:var(--papel);border-radius:var(--raio);overflow:hidden;display:flex;flex-direction:column;border:1px solid var(--linha);transition:transform .15s ease, box-shadow .15s ease}
-.card:hover{transform:translateY(-3px);box-shadow:0 10px 24px rgba(22,25,28,.10)}
-.card-foto{position:relative;aspect-ratio:3/2;background:var(--asfalto);overflow:hidden}
-.card-foto img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
-.card-foto svg{position:absolute;right:-20px;top:50%;transform:translateY(-50%);width:85%;opacity:.55}
-.pill{display:flex;gap:6px;flex-wrap:wrap}
-.tag{font-size:12px;font-weight:800;letter-spacing:1.5px;padding:5px 9px;border-radius:6px;background:var(--asfalto);color:var(--neblina)}
-.tag-data{background:var(--asfalto);color:var(--neblina)}
-.tag-tipo-claro{background:var(--azul-claro);color:var(--azul-escuro)}
-.tag-novo{background:var(--laranja);color:var(--asfalto)}
-.tag-tipo{background:var(--azul);color:var(--asfalto)}
-.card-corpo{padding:16px 18px 18px;display:flex;flex-direction:column;gap:10px;flex:1}
-.card-corpo h3{margin:0;font-size:18px;line-height:1.25;font-weight:800}
-.card-plataforma{font-size:14px;color:var(--texto-2)}
-.card-corpo .btn{margin-top:auto;width:100%}
-.vazio{grid-column:1/-1;background:var(--papel);border:1px dashed #C9C4B8;border-radius:var(--raio);padding:32px;text-align:center;color:var(--texto-2)}
-.esqueleto{border-radius:var(--raio);background:linear-gradient(90deg,#ECE9E2,#F4F2EC,#ECE9E2);background-size:200% 100%;animation:brilho 1.2s infinite linear}
+/* Lista de álbuns */
+.lista{list-style:none;margin:0;padding:0}
+.item{border-top:1px solid var(--fio);padding:40px 0}
+.item:first-child{border-top:0}
+.item-link{display:grid;gap:20px;color:inherit;text-decoration:none}
+.item-foto{position:relative;aspect-ratio:3/2;background:var(--tinta);overflow:hidden}
+.item-foto img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;transition:transform .2s var(--curva)}
+.item-texto{display:flex;flex-direction:column;gap:8px}
+.item h3{margin:0;font-family:var(--display);font-weight:700;font-size:clamp(28px,3.2vw,40px);line-height:1.08;letter-spacing:-.015em;text-decoration:underline;text-decoration-color:transparent;text-decoration-thickness:2px;text-underline-offset:8px;transition:text-decoration-color .2s var(--curva)}
+.item .linha-fina{margin:0;font-family:var(--display);font-style:italic;font-size:20px;line-height:1.4;color:var(--tinta-media)}
+.item .ver{margin-top:8px;align-self:flex-start}
+.item-link:hover h3{text-decoration-color:var(--acento)}
+.item-link:hover .item-foto img{transform:scale(1.02)}
+.item-link:hover .seta{transform:translateX(6px)}
+@media (min-width:1024px){
+  .item-link{grid-template-columns:repeat(12,1fr);gap:0 32px;align-items:center}
+  .item-texto{grid-column:1 / 6;order:1}
+  .item-foto{grid-column:6 / 13;order:2}
+  .item:nth-child(even) .item-texto{grid-column:8 / 13;order:2}
+  .item:nth-child(even) .item-foto{grid-column:1 / 8;order:1}
+}
+.vazio{border-top:1px solid var(--fio);padding:48px 0;font-family:var(--display);font-style:italic;font-size:24px;color:var(--tinta-media)}
+.esqueleto{background:linear-gradient(90deg,#E6E0D4,#EEE9DF,#E6E0D4);background-size:200% 100%;animation:brilho 1.4s infinite linear}
 @keyframes brilho{to{background-position:-200% 0}}
-.mais{display:flex;justify-content:center;margin-top:24px}
+.mais{display:flex;justify-content:center;border-top:1px solid var(--fio);padding-top:24px}
 .mais[hidden]{display:none}
 
-/* Agenda (lateral) */
-.agenda{background:var(--asfalto);color:var(--neblina);border-radius:var(--raio);padding:24px;display:flex;flex-direction:column;gap:4px}
-.agenda .titulo{font-size:24px;margin-bottom:4px}
-.agenda-sub{font-size:14px;color:var(--concreto);margin-bottom:10px}
-.ag-item{display:flex;gap:14px;align-items:center;padding:12px 0;border-top:1px solid #2F353A}
-.ag-data{width:58px;flex-shrink:0;text-align:center;line-height:1;border-radius:10px;padding:9px 0;background:var(--asfalto-2)}
-.ag-item:first-of-type .ag-data{background:var(--laranja);color:var(--asfalto)}
-.ag-item:first-of-type .ag-mes{color:var(--asfalto)}
-.ag-dia{display:block;font-weight:900;font-stretch:125%;font-size:24px}
-.ag-mes{display:block;font-weight:700;font-size:11px;letter-spacing:2px;color:var(--azul);margin-top:4px}
-.ag-info{min-width:0;display:flex;flex-direction:column;gap:2px}
-.ag-info b{font-size:15px;line-height:1.3}
-.ag-info a{color:var(--neblina);text-decoration:underline;text-decoration-color:var(--azul);text-underline-offset:3px}
-.ag-info a:hover{color:var(--azul)}
-.ag-meta{font-size:13px;color:var(--concreto)}
-.ag-nota{margin-top:10px;font-size:14px;color:var(--concreto)}
-.ag-nota strong{color:var(--azul)}
+/* Agenda + como achar */
+.rodape-secoes{background:var(--papel-frio);padding:96px 0 112px}
+.rodape-secoes .wrap{display:grid;gap:80px}
+@media (min-width:1024px){
+  .rodape-secoes .wrap{grid-template-columns:repeat(12,1fr);gap:0 32px}
+  .agenda{grid-column:1 / 8}
+  .passos{grid-column:9 / 13}
+}
+.agenda .sub{margin:8px 0 24px;font-family:var(--display);font-style:italic;font-size:20px;color:var(--tinta-media)}
+.ag-item{display:flex;gap:24px;align-items:baseline;padding:20px 0;border-top:1px solid var(--fio)}
+.ag-data{flex-shrink:0;width:72px;font-family:var(--display);line-height:1}
+.ag-dia{display:block;font-weight:700;font-size:44px;letter-spacing:-.02em}
+.ag-mes{display:block;margin-top:6px;font-family:var(--sans);font-weight:600;font-size:12px;letter-spacing:.08em;color:var(--tinta-media)}
+.ag-item:first-of-type .ag-dia,.ag-item:first-of-type .ag-mes{color:var(--acento)}
+.ag-info{min-width:0;display:flex;flex-direction:column;gap:4px}
+.ag-info b{font-family:var(--display);font-weight:700;font-size:24px;line-height:1.2}
+.ag-info a{text-decoration:underline;text-decoration-color:var(--acento)}
+.ag-meta{font-family:var(--sans);font-weight:500;font-size:12px;letter-spacing:.08em;text-transform:uppercase;color:var(--tinta-media)}
 
-/* Como achar (lateral) */
-.passos{background:var(--azul-claro);border-radius:var(--raio);padding:24px;display:flex;flex-direction:column;gap:14px}
-.passos .titulo{font-size:22px}
-.passo{display:flex;gap:12px;align-items:flex-start;font-size:15px;line-height:1.45}
-.passo-n{flex-shrink:0;width:30px;height:30px;border-radius:50%;background:var(--azul);color:var(--asfalto);display:flex;align-items:center;justify-content:center;font-weight:900;font-size:14px}
-.passos-nota{font-size:13px;color:var(--texto-2)}
+.passos ol{list-style:none;margin:24px 0 0;padding:0}
+.passos li{display:flex;gap:20px;align-items:baseline;padding:20px 0;border-top:1px solid var(--fio);font-size:19px;line-height:1.55}
+.passo-n{flex-shrink:0;width:36px;font-family:var(--display);font-style:italic;font-weight:400;font-size:44px;line-height:1;color:var(--acento)}
 
 /* Rodapé */
-.rodape{background:var(--asfalto);color:var(--concreto);padding:36px 0;font-size:14px;border-top:6px solid var(--azul)}
-.rodape .wrap{display:flex;gap:20px;justify-content:space-between;align-items:center;flex-wrap:wrap}
-.rodape a{color:var(--neblina)}
-.rodape-links{display:flex;gap:10px;flex-wrap:wrap}
-.assinatura{font-size:12px;letter-spacing:.5px;color:#8A9096;margin-top:2px}
+.rodape{border-top:2px solid var(--fio);padding:40px 0 56px}
+.rodape .wrap{display:flex;gap:24px;justify-content:space-between;align-items:flex-end;flex-wrap:wrap}
+.rodape .marca{font-size:32px}
+.assinatura{margin-top:8px}
+.rodape-links{display:flex;gap:0 32px;flex-wrap:wrap}
+
+/* Revelação das imagens ao rolar */
+.revelar{opacity:0;transition:opacity .8s var(--curva)}
+.revelar.visivel{opacity:1}
 
 @media (max-width:720px){
-  .menu{order:3;width:100%;margin-left:0;justify-content:space-between}
-  .menu a{padding:10px 6px;font-size:14px}
-  .hero{padding:40px 0 48px}
-  .hero-rastro{width:300px;top:12px;opacity:.6}
-  .corpo{padding:32px 0 48px}
-  .destaque-info{padding:24px}
-  .destaque-foto{min-height:220px}
+  body{font-size:18px}
+  .wrap{padding:0 20px}
+  .menu{width:100%;margin-left:0;gap:0 20px}
+  .capa{padding:48px 0 40px}
+  .busca input{font-size:22px}
+  .secao{padding-bottom:80px}
+  .item{padding:32px 0}
+  .rodape-secoes{padding:72px 0 80px}
+  .ag-dia{font-size:36px}
+  .ag-data{width:60px}
 }
 @media (prefers-reduced-motion:reduce){
   html{scroll-behavior:auto}
   .esqueleto{animation:none}
-  .card,.card:hover{transition:none;transform:none}
+  .revelar{opacity:1;transition:none}
+  .item-foto img,.item-link:hover .item-foto img{transition:none;transform:none}
+  .ver .seta,.ver:hover .seta,.item-link:hover .seta{transition:none;transform:none}
 }
 </style>
 </head>
@@ -194,97 +205,82 @@ a:hover{color:#083A84}
 
 <header class="topo">
   <div class="wrap">
-    <a class="marca" href="#inicio" aria-label="Rastro Imagens, início">
-      <svg width="44" height="34" viewBox="0 0 160 120" aria-hidden="true">
-        <text x="4" y="104" fill="#2F8CFF" opacity=".22" font-family="Archivo, sans-serif" font-weight="900" font-size="120" style="font-stretch:125%">R</text>
-        <text x="26" y="104" fill="#2F8CFF" opacity=".5" font-family="Archivo, sans-serif" font-weight="900" font-size="120" style="font-stretch:125%">R</text>
-        <text x="50" y="104" fill="#2F8CFF" font-family="Archivo, sans-serif" font-weight="900" font-size="120" style="font-stretch:125%">R</text>
-      </svg>
-      <span class="marca-nome"><b>RASTRO</b><span>IMAGENS</span></span>
-    </a>
+    <a class="marca" href="#inicio" aria-label="Rastro Imagens, início">Rastro <em>Imagens</em></a>
     <nav class="menu" aria-label="Principal">
       <a href="#albuns">Álbuns</a>
       <a href="#agenda">Agenda</a>
       <a href="#como-funciona">Como achar sua foto</a>
       <!-- <a href="#videos">Vídeos</a> -->
-      <a class="ig" href="https://www.instagram.com/rastroimagens/" target="_blank" rel="noopener" aria-label="Instagram @rastroimagens">
-        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1"/></svg>
-      </a>
+      <a href="https://www.instagram.com/rastroimagens/" target="_blank" rel="noopener" aria-label="Instagram @rastroimagens">Instagram</a>
     </nav>
   </div>
 </header>
 
 <main id="inicio">
 
-  <section class="hero" aria-labelledby="titulo-hero">
-    <svg class="hero-rastro" viewBox="0 0 560 120" aria-hidden="true">
-      <polygon points="0,56 560,40 560,80 0,64" fill="#16191C" opacity=".14"/>
-      <polygon points="120,16 560,6 560,30 120,22" fill="#16191C" opacity=".28"/>
-      <polygon points="120,98 560,90 560,114 120,104" fill="#16191C" opacity=".28"/>
-    </svg>
+  <section class="capa" aria-labelledby="titulo-capa">
     <div class="wrap">
-      <h1 id="titulo-hero">SEU MOVIMENTO DEIXOU UM RASTRO.</h1>
-      <p>Encontre suas fotos de corridas, treinos, motos e carros na Serra Gaúcha.</p>
+      <div class="chapeu">Fotografia de eventos · Serra Gaúcha</div>
+      <h1 id="titulo-capa">Seu movimento deixou um rastro.</h1>
+      <p class="linha-fina">Encontre suas fotos de corridas, treinos, motos e carros na Serra Gaúcha.</p>
       <form class="busca" role="search" onsubmit="event.preventDefault();document.getElementById('albuns').scrollIntoView();">
         <label class="sr-only" for="busca">Buscar evento</label>
         <div class="busca-linha">
           <input id="busca" type="search" placeholder="Qual evento você participou?" autocomplete="off">
-          <button class="btn btn-escuro" type="submit">Achar minha foto</button>
+          <button class="link-texto" type="submit">Achar minha foto →</button>
         </div>
       </form>
       <div class="filtros" id="filtros" role="group" aria-label="Filtrar por tipo"></div>
     </div>
   </section>
 
-  <div class="wrap corpo">
-
-    <div class="principal">
-
-      <section id="ultimo" aria-labelledby="titulo-ultimo">
-        <div class="cab-secao"><h2 class="titulo" id="titulo-ultimo">ÚLTIMO EVENTO</h2></div>
-        <div id="destaque"><div class="esqueleto" style="height:300px"></div></div>
-      </section>
-
-      <section id="albuns" aria-labelledby="titulo-albuns">
-        <div class="cab-secao"><h2 class="titulo" id="titulo-albuns">ÁLBUNS</h2></div>
-        <div class="grade" id="grade" aria-live="polite">
-          <div class="esqueleto" style="height:320px"></div><div class="esqueleto" style="height:320px"></div>
-        </div>
-        <div class="mais" id="mais" hidden>
-          <button class="btn btn-escuro" type="button" id="btn-mais">Ver eventos anteriores</button>
-        </div>
-      </section>
-
+  <section class="secao" id="ultimo" aria-labelledby="titulo-ultimo">
+    <div class="wrap">
+      <div class="cab-secao"><h2 class="h-secao" id="titulo-ultimo">Último evento</h2></div>
+      <div id="destaque"><div class="esqueleto" style="aspect-ratio:16/9;margin-top:24px"></div></div>
     </div>
+  </section>
 
-    <aside class="lateral">
+  <section class="secao" id="albuns" aria-labelledby="titulo-albuns">
+    <div class="wrap">
+      <div class="cab-secao"><h2 class="h-secao" id="titulo-albuns">Álbuns</h2></div>
+      <ul class="lista" id="grade" aria-live="polite">
+        <li class="item"><div class="esqueleto" style="height:280px"></div></li>
+      </ul>
+      <div class="mais" id="mais" hidden>
+        <button class="link-texto" type="button" id="btn-mais">Ver eventos anteriores</button>
+      </div>
+    </div>
+  </section>
+
+  <div class="rodape-secoes">
+    <div class="wrap">
       <section class="agenda" id="agenda" aria-labelledby="titulo-agenda">
-        <h2 class="titulo" id="titulo-agenda">ONDE VOU ESTAR</h2>
-        <div class="agenda-sub">Próximos eventos com a Rastro no percurso</div>
+        <div class="cab-secao"><h2 class="h-secao" id="titulo-agenda">Onde vou estar</h2></div>
+        <p class="sub">Próximos eventos com a Rastro no percurso.</p>
         <div id="lista-agenda" aria-live="polite">
-          <div class="esqueleto" style="height:60px;opacity:.15;margin:8px 0"></div>
-          <div class="esqueleto" style="height:60px;opacity:.15;margin:8px 0"></div>
+          <div class="esqueleto" style="height:72px;margin:8px 0"></div>
+          <div class="esqueleto" style="height:72px;margin:8px 0"></div>
         </div>
       </section>
 
       <section class="passos" id="como-funciona" aria-labelledby="titulo-como">
-        <h2 class="titulo" id="titulo-como">COMO ACHAR SUA FOTO</h2>
-        <div class="passo"><span class="passo-n">1</span><span>Busque o evento ou escolha na lista.</span></div>
-        <div class="passo"><span class="passo-n">2</span><span>Clique em <b>Ver fotos</b> para abrir o álbum.</span></div>
-        <div class="passo"><span class="passo-n">3</span><span>Ache suas fotos e finalize a compra direto no álbum.</span></div>
+        <div class="cab-secao"><h2 class="h-secao" id="titulo-como">Como achar sua foto</h2></div>
+        <ol>
+          <li><span class="passo-n">1</span><span>Busque o evento ou escolha na lista.</span></li>
+          <li><span class="passo-n">2</span><span>Clique em <b>Ver fotos</b> para abrir o álbum.</span></li>
+          <li><span class="passo-n">3</span><span>Ache suas fotos e finalize a compra direto no álbum.</span></li>
+        </ol>
       </section>
-    </aside>
-
+    </div>
   </div>
 
   <!-- SEÇÃO DE VÍDEOS: descomentar quando houver vídeo para postar (e o link "Vídeos" no menu)
-  <section class="secao faixa-escura" id="videos" aria-labelledby="titulo-videos">
-    <div class="wrap videos">
-      <div>
-        <h2 id="titulo-videos" class="titulo">VÍDEOS E DRONE</h2>
-        <p>Vídeos dos eventos e imagens aéreas de drone.</p>
-        <a class="btn btn-azul" href="https://www.instagram.com/rastroimagens/" target="_blank" rel="noopener">Ver no Instagram</a>
-      </div>
+  <section class="secao" id="videos" aria-labelledby="titulo-videos">
+    <div class="wrap">
+      <div class="cab-secao"><h2 id="titulo-videos" class="h-secao">Vídeos e drone</h2></div>
+      <p class="linha-fina">Vídeos dos eventos e imagens aéreas de drone.</p>
+      <a class="ver" href="https://www.instagram.com/rastroimagens/" target="_blank" rel="noopener">Ver no Instagram <span class="seta">→</span></a>
       <div class="video-caixa">[VÍDEO EM DESTAQUE]</div>
     </div>
   </section>
@@ -295,13 +291,14 @@ a:hover{color:#083A84}
 <footer class="rodape">
   <div class="wrap">
     <div>
-      <div style="color:var(--neblina);font-weight:900;font-stretch:125%">RASTRO IMAGENS</div>
-      <div class="assinatura">by Bruno Ghiggi</div>
+      <div class="marca">Rastro <em>Imagens</em></div>
+      <div class="legenda assinatura">by Bruno Ghiggi</div>
     </div>
     <div class="rodape-links">
-      <a class="btn btn-azul" href="https://www.instagram.com/rastroimagens/" target="_blank" rel="noopener">Instagram</a>
-      <a class="btn btn-escuro" style="border:1.5px solid #3A4045" href="https://wa.me/5554991545485" target="_blank" rel="noopener">WhatsApp</a>
-    </div>  </div>
+      <a class="link-texto" href="https://www.instagram.com/rastroimagens/" target="_blank" rel="noopener">Instagram</a>
+      <a class="link-texto" href="https://wa.me/5554991545485" target="_blank" rel="noopener">WhatsApp</a>
+    </div>
+  </div>
 </footer>
 
 <script>
@@ -425,27 +422,35 @@ function el(tag, attrs, filhos){
     if (k === 'text') n.textContent = attrs[k];
     else n.setAttribute(k, attrs[k]);
   }
-  (filhos || []).forEach(f => f && n.appendChild(f));
+  (filhos || []).forEach(f => f && n.appendChild(typeof f === 'string' ? document.createTextNode(f) : f));
   return n;
 }
 
+/* Grafismo do rastro, usado quando o evento ainda não tem foto */
 function rastroSVG(cor){
   const ns = 'http://www.w3.org/2000/svg';
   const s = document.createElementNS(ns, 'svg');
   s.setAttribute('viewBox', '0 0 220 60'); s.setAttribute('aria-hidden', 'true');
-  [['0,26 220,20 220,40 0,34', .35], ['40,6 220,2 220,14 40,10', .7], ['40,50 220,46 220,58 40,54', .7]].forEach(([p, o]) => {
+  s.setAttribute('style', 'position:absolute;left:10%;top:50%;transform:translateY(-50%);width:80%');
+  [['0,26 220,20 220,40 0,34', .25], ['40,6 220,2 220,14 40,10', .5], ['40,50 220,46 220,58 40,54', .5]].forEach(([p, o]) => {
     const pg = document.createElementNS(ns, 'polygon');
-    pg.setAttribute('points', p); pg.setAttribute('fill', cor || '#2F8CFF'); pg.setAttribute('opacity', o);
+    pg.setAttribute('points', p); pg.setAttribute('fill', cor || '#F1ECE2'); pg.setAttribute('opacity', o);
     s.appendChild(pg);
   });
   return s;
 }
+
+/* Revela as fotos suavemente quando entram na tela */
+const observador = ('IntersectionObserver' in window) ? new IntersectionObserver(entradas => {
+  entradas.forEach(en => { if (en.isIntersecting){ en.target.classList.add('visivel'); observador.unobserve(en.target); } });
+}, { rootMargin: '0px 0px -10% 0px' }) : null;
 
 /* Coloca a foto (ou o grafismo, se não houver / falhar) dentro de um contêiner */
 function preencherFoto(caixa, e){
   const src = imagemDe(e);
   if (!src){ caixa.appendChild(rastroSVG()); return; }
   const img = el('img', { src: src, alt: 'Foto do evento ' + e.nome, loading: 'lazy', decoding: 'async' });
+  if (observador){ img.classList.add('revelar'); observador.observe(img); }
   img.addEventListener('error', () => { img.remove(); caixa.prepend(rastroSVG()); });
   caixa.prepend(img);
 }
@@ -456,16 +461,28 @@ function ehNovo(e){
   return dias <= DIAS_NOVO && dias >= -1;
 }
 
-function linkFotos(e, classe){
-  const a = el('a', {
-    class: classe, href: e.link, target: '_blank', rel: 'noopener',
-    'aria-label': 'Ver fotos de ' + e.nome,
-    text: 'Ver fotos'
-  });
+function registrarClique(a, e){
   a.addEventListener('click', () => rastrear('ver_fotos', {
     evento: e.nome, plataforma: e.plataforma || 'Outra', tipo_evento: e.tipo, data_evento: e.dataTxt, link_url: e.link
   }));
   return a;
+}
+
+function linkFotos(e){
+  const a = el('a', {
+    class: 'ver', href: e.link, target: '_blank', rel: 'noopener',
+    'aria-label': 'Ver fotos de ' + e.nome
+  }, ['Ver fotos ', el('span', { class: 'seta', 'aria-hidden': 'true', text: '→' })]);
+  return registrarClique(a, e);
+}
+
+/* Chapéu: "NOVO · CORRIDA · 03 OUT 2026" */
+function chapeu(e, comAno){
+  const data = e.data ? String(e.data.getDate()).padStart(2, '0') + ' ' + MESES[e.data.getMonth()] + (comAno ? ' ' + e.data.getFullYear() : '') : e.dataTxt;
+  return el('div', { class: 'chapeu' }, [
+    ehNovo(e) ? el('span', { class: 'novo', text: 'Novo · ' }) : null,
+    e.tipo + (data ? ' · ' + data : '')
+  ]);
 }
 
 /* ---------- carga de dados ---------- */
@@ -533,59 +550,54 @@ function desenharDestaque(){
   if (!e){ document.getElementById('ultimo').hidden = true; return; }
   const foto = el('div', { class: 'destaque-foto' });
   preencherFoto(foto, e);
-  /* etiquetas ficam fora da foto para não cobrir o atleta */
-  const etiquetas = el('div', { class: 'pill' }, [
-    ehNovo(e) ? el('span', { class: 'tag tag-novo', text: 'NOVO' }) : null,
-    el('span', { class: 'tag tag-tipo', text: e.tipo.toUpperCase() })
+  /* textos ficam fora da foto para não cobrir o atleta */
+  const texto = el('div', { class: 'destaque-texto' }, [
+    el('div', { class: 'titulo-bloco' }, [chapeu(e, true), el('h3', { text: e.nome })]),
+    el('div', { class: 'acao-bloco' }, [
+      el('p', { class: 'linha-fina', text: 'O álbum completo do evento já está no ar.' }),
+      linkFotos(e)
+    ])
   ]);
-  const dataTxt = e.data ? String(e.data.getDate()).padStart(2, '0') + ' ' + MESES[e.data.getMonth()] + ' ' + e.data.getFullYear() : e.dataTxt;
-  const info = el('div', { class: 'destaque-info' }, [
-    etiquetas,
-    el('span', { class: 'rotulo', style: 'color:var(--azul)', text: dataTxt }),
-    el('h3', { text: e.nome }),
-    el('span', { class: 'destaque-meta', text: 'Álbum completo do evento' }),
-    linkFotos(e, 'btn btn-laranja')
-  ]);
-  caixa.appendChild(el('article', { class: 'destaque' }, [foto, info]));
+  caixa.appendChild(el('article', { class: 'destaque' }, [
+    foto,
+    el('div', { class: 'legenda', text: e.nome + (e.data ? ', ' + e.data.getFullYear() : '') }),
+    texto
+  ]));
 }
 
-/* ---------- grade de álbuns ---------- */
-function card(e){
-  const foto = el('div', { class: 'card-foto' });
+/* ---------- lista de álbuns ---------- */
+function item(e){
+  const foto = el('div', { class: 'item-foto' });
   preencherFoto(foto, e);
-  const dataCurta = e.data ? String(e.data.getDate()).padStart(2, '0') + ' ' + MESES[e.data.getMonth()] : e.dataTxt;
-  /* etiquetas ficam fora da foto para não cobrir o atleta */
-  const etiquetas = el('div', { class: 'pill' }, [
-    el('span', { class: 'tag tag-data', text: dataCurta }),
-    ehNovo(e) ? el('span', { class: 'tag tag-novo', text: 'NOVO' }) : null,
-    el('span', { class: 'tag tag-tipo-claro', text: e.tipo.toUpperCase() })
-  ]);
-  const corpo = el('div', { class: 'card-corpo' }, [
-    etiquetas,
+  const texto = el('div', { class: 'item-texto' }, [
+    chapeu(e, true),
     el('h3', { text: e.nome }),
-    el('span', { class: 'card-plataforma', text: 'Álbum completo' + (e.data ? ' · ' + e.data.getFullYear() : '') }),
-    linkFotos(e, 'btn btn-azul')
+    el('p', { class: 'linha-fina', text: 'Álbum completo' + (e.data ? ' · ' + e.data.getFullYear() : '') }),
+    el('span', { class: 'ver', 'aria-hidden': 'true' }, ['Ver fotos ', el('span', { class: 'seta', text: '→' })])
   ]);
-  return el('article', { class: 'card' }, [foto, corpo]);
+  /* o item inteiro é um único link (foto + texto) */
+  const a = el('a', { class: 'item-link', href: e.link, target: '_blank', rel: 'noopener', 'aria-label': 'Ver fotos de ' + e.nome }, [texto, foto]);
+  registrarClique(a, e);
+  return el('li', { class: 'item' }, [a]);
 }
 
 function desenhar(){
   const grade = document.getElementById('grade');
   const t = normalizar(termo);
   const buscando = !!t || filtroTipo !== 'Todos';
-  /* sem busca/filtro, o último evento já aparece em destaque e sai da grade */
+  /* sem busca/filtro, o último evento já aparece em destaque e sai da lista */
   const base = buscando ? todos : todos.slice(1);
   const filtrados = base.filter(e =>
     (filtroTipo === 'Todos' || e.tipo === filtroTipo) &&
     (!t || normalizar(e.nome + ' ' + e.tipo).includes(t))
   );
   document.getElementById('ultimo').hidden = buscando || !todos.length;
-  document.getElementById('titulo-albuns').textContent = buscando ? 'RESULTADOS' : 'ÁLBUNS';
+  document.getElementById('titulo-albuns').textContent = buscando ? 'Resultados' : 'Álbuns';
   grade.textContent = '';
   if (!filtrados.length){
-    grade.appendChild(el('div', { class: 'vazio', text: buscando ? 'Nenhum evento encontrado. Tente outro nome.' : 'Novos álbuns em breve.' }));
+    grade.appendChild(el('li', { class: 'vazio', text: buscando ? 'Nenhum evento encontrado. Tente outro nome.' : 'Novos álbuns em breve.' }));
   } else {
-    filtrados.slice(0, limite).forEach(e => grade.appendChild(card(e)));
+    filtrados.slice(0, limite).forEach(e => grade.appendChild(item(e)));
   }
   document.getElementById('mais').hidden = filtrados.length <= limite;
 }
@@ -628,7 +640,7 @@ function desenharAgenda(lista){
   const caixa = document.getElementById('lista-agenda');
   caixa.textContent = '';
   if (!lista.length){
-    caixa.appendChild(el('div', { class: 'ag-meta', style: 'padding:12px 0', text: 'Nenhum evento agendado no momento. Acompanhe no Instagram.' }));
+    caixa.appendChild(el('div', { class: 'ag-meta', style: 'padding:20px 0;border-top:1px solid var(--fio)', text: 'Nenhum evento agendado no momento. Acompanhe no Instagram.' }));
     return;
   }
   lista.forEach(e => {
